@@ -32,12 +32,28 @@
         modules = [./whatnamethis/nvf-config.nix];
       }).neovim;
 
-    # Am I doing this right
+    # Erebor: Thinkpad laptop used for studying and coding
     nixosConfigurations.Erebor = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
 
       modules = [
-        ./configuration.nix
+        ({pkgs, ...}: {
+          environment.systemPackages = [self.packages.${pkgs.stdenv.system}.nvim-saka];
+        })
+
+        ./hosts/Erebor/config.nix
+
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.alex = {
+            imports = [
+              ./hosts/Erebor/home.nix
+              catppuccin.homeModules.catppuccin
+            ];
+          };
+        }
       ];
     };
 
@@ -56,6 +72,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.alex = {
+
             imports = [
               ./hosts/Rivendell/home.nix
               catppuccin.homeModules.catppuccin
