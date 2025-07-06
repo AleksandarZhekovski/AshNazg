@@ -16,71 +16,46 @@
 
   # Use the systemd-boot EFI boot loader.
   boot = {
-  loader.systemd-boot.enable = true;
-  loader.efi.canTouchEfiVariables = true;
-  kernelPackages = pkgs.linuxPackages_latest;
-  initrd.kernelModules = ["amdgpu"];
-  };
-  
-  services.greetd = {
-    enable = true;
-    settings = rec {
-      initial_session = {
-        command = "${pkgs.hyprland}/bin/Hyprland -c /home/alex/splinter/whatnamethis/hypr/hyprland.conf";
-        user = "alex";
-      };
-      default_session = initial_session;
-    };
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
+    kernelPackages = pkgs.linuxPackages_latest;
+    initrd.kernelModules = ["amdgpu"];
   };
 
-  services.openssh = {
-    enable = true;
-    ports = [2024];
-    settings = {
-      PasswordAuthentication = true;
-    };
+  networking = {
+    hostName = "Rivendell"; # Define your hostname.
+    networkmanager.enable = true; # Easiest to use and most distros use this by default.
   };
-  services.zerotierone = {
-    enable = true;
-    joinNetworks = [
-      "363c67c55a84e9d4"
-    ];
-  };
-  networking.hostName = "Rivendell"; # Define your hostname.
-  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
-  #networking.firewall.enable = true;
-  #networking.nat = {
-  #  enable = true;
-  #  externalInterface = "enp3s0";
-  #  internalInterfaces = ["wg0"];
-  #};
-  #networking.wireguard.interfaces = {
-  #  wg0 = {
-  #    privateKeyFile = "/home/alex/wireguard-keys/private";
-  #    peers = [
-  #      {
-  #        publicKey = "MxTK3xv2reZziaQ4Y3eaH2L+iASKk0/lb3e3V0j3yFk=";
-  #        allowedIPs = ["0.0.0.0/0"];
-  #        endpoint = "5.53.198.197:51820";
-  #        persistentKeepalive = 25;
-  #      }
-  #    ];
-  #  };
-  #};
 
-  # Set your time zone.
   time.timeZone = "Europe/Sofia";
 
-  # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  #   useXkbConfig = true; # use xkb.options in tty.
-  # };
-
-
   services = {
+    greetd = {
+      enable = true;
+      settings = rec {
+        initial_session = {
+          command = "${pkgs.hyprland}/bin/Hyprland -c /home/alex/AshNazg/whatnamethis/hypr/hyprland.conf";
+          user = "alex";
+        };
+        default_session = initial_session;
+      };
+    };
+
+    openssh = {
+      enable = true;
+      ports = [2024];
+      settings = {
+        PasswordAuthentication = true;
+      };
+    };
+
+    zerotierone = {
+      enable = true;
+      joinNetworks = [
+        "363c67c55a84e9d4"
+      ];
+    };
+
     blueman.enable = true;
     pipewire = {
       enable = true;
@@ -98,15 +73,13 @@
     amdvlk
   ];
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.libinput.enable = true;
-
   programs = {
     hyprland.enable = true;
     waybar.enable = true;
     firefox.enable = true;
-    zsh.enable = true;
     steam.enable = true;
+    zsh.enable = true;
+    yazi.enable = true;
   };
 
   users.defaultUserShell = pkgs.zsh;
@@ -122,15 +95,35 @@
       obsidian
       vesktop
       p7zip
-      nemo
       hyprshot
       hyprpaper
       lutris-free
       via
       youtube-music
       playerctl
+      vlc
     ];
   };
+  environment.variables.EDITOR = "nvim";
+  environment.systemPackages = with pkgs; [
+    nano
+    wget
+    libgcc
+    gcc
+    killall
+    brightnessctl
+    btop
+    wol
+    unzip
+    qbittorrent-cli
+    qbittorrent
+    clinfo
+    alejandra
+  ];
+
+  fonts.packages = with pkgs; [
+    nerd-fonts.hack
+  ];
 
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) [
@@ -142,38 +135,8 @@
       "zerotierone"
     ];
 
-  fonts.packages = with pkgs; [
-    nerd-fonts.hack
-  ];
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.variables.EDITOR = "nvim";
-  environment.systemPackages = with pkgs; [
-    # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-    git
-    libgcc
-    lua
-    lua53Packages.luarocks
-    ripgrep
-    fd
-    fzf
-    lazygit
-    gcc
-    killall
-    brightnessctl
-    wol
-    btop
-    wol
-    unzip
-    qbittorrent-cli
-    qbittorrent
-    clinfo
-    alejandra
-    wireguard-tools
-    wireguard-ui
-  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
