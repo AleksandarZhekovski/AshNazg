@@ -14,7 +14,6 @@
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
-
   home-manager.backupFileExtension = "backup";
   # Use the systemd-boot EFI boot loader.
   boot = {
@@ -31,6 +30,14 @@
 
   time.timeZone = "Europe/Sofia";
 
+  # fileSystems."/home/alex/journal" = {
+  #   device = "/dev/disk/by-id/usb-USB_Flash_Disk_CCYYMMDDHHmmSS8V82LB-0:0";
+  #   fsType = "ext4";
+  #   options = [
+  #     "users"
+  #     "nofail"
+  #   ];
+  # };
   services = {
     greetd = {
       enable = true;
@@ -42,6 +49,8 @@
         default_session = initial_session;
       };
     };
+
+    udisks2.enable = true;
 
     openssh = {
       enable = true;

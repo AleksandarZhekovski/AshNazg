@@ -6,8 +6,8 @@
   home.username = "alex";
   home.homeDirectory = "/home/alex";
 
-
   home.packages = with pkgs; [
+    # udisks2
   ];
 
   programs.zsh = {
@@ -23,6 +23,18 @@
     userName = "AleksandarZhekovski";
     userEmail = "aleksandarzhekovski@protonmail.com";
   };
+
+  services.udiskie = {
+    enable = true;
+    settings = {
+      program_options = {
+        tray = false;
+        notify = false;
+        file_mapper = "${pkgs.yazi}/bin/yazi";
+      };
+    };
+  };
+
   #
   # gtk = {
   #   # enable = true;
