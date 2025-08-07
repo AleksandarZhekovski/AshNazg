@@ -50,7 +50,6 @@
       };
     };
 
-    udisks2.enable = true;
 
     openssh = {
       enable = true;
@@ -108,8 +107,6 @@
       p7zip
       hyprshot
       hyprpaper
-      lutris-free
-      via
       youtube-music
       playerctl
       vlc
@@ -117,7 +114,6 @@
   };
   environment.variables.EDITOR = "nvim";
   environment.systemPackages = with pkgs; [
-    nano
     wget
     libgcc
     gcc
