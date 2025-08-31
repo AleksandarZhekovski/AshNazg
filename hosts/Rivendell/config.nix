@@ -57,9 +57,12 @@
     };
 
     blueman.enable = true;
+
     pipewire = {
       enable = true;
       pulse.enable = true;
+      extraConfig = {
+      };
     };
   };
 
@@ -101,6 +104,8 @@
       via
       youtube-music
       playerctl
+      wine
+      winetricks
       vlc
     ];
   };
