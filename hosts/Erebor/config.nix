@@ -20,7 +20,7 @@
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
     kernelPackages = pkgs.linuxPackages_latest;
-    # initrd.kernelModules = ["amdgpu"];
+    kernelParams = ["mitigations=off"];
   };
 
   networking = {
@@ -50,7 +50,6 @@
       };
     };
 
-
     openssh = {
       enable = true;
       ports = [2024];
@@ -71,6 +70,8 @@
       enable = true;
       pulse.enable = true;
     };
+
+    upower.enable = true;
   };
 
   hardware.bluetooth = {

@@ -15,6 +15,8 @@
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
   outputs = inputs @ {
@@ -23,6 +25,7 @@
     nvf,
     home-manager,
     catppuccin,
+    nixos-hardware,
     ...
   }: {
     # Something to do with nvf
@@ -40,6 +43,8 @@
         ({pkgs, ...}: {
           environment.systemPackages = [self.packages.${pkgs.stdenv.system}.nvim-saka];
         })
+
+        nixos-hardware.nixosModules.lenovo-thinkpad-l13
 
         ./hosts/Erebor/config.nix
 
