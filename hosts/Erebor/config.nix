@@ -87,7 +87,7 @@
     hyprland.enable = true;
     waybar.enable = true;
     firefox.enable = true;
-    steam.enable = true;
+    #steam.enable = true;
     zsh.enable = true;
     yazi.enable = true;
   };
@@ -122,8 +122,8 @@
     btop
     wol
     unzip
-    qbittorrent-cli
-    qbittorrent
+    #qbittorrent-cli
+    #qbittorrent
     clinfo
     alejandra
   ];
