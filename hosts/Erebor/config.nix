@@ -58,6 +58,8 @@
       };
     };
 
+    fwupd.enable = true;
+
     zerotierone = {
       enable = true;
       joinNetworks = [
@@ -72,6 +74,10 @@
     };
 
     upower.enable = true;
+
+    thinkfan = {
+      enable = true;
+    };
   };
 
   hardware.bluetooth = {
