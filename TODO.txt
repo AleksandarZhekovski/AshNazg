@@ -1,6 +1,3 @@
-monitor sound on Rivendell
-  Maybe fixed
-
 Auto mount usbs
   encrypt would be cool
 
@@ -27,5 +24,11 @@ nvf tweeking
 
 MODLUES/BUNDLES !!!!!
   Can't keep tweeking things for both machines
+
+
+GOOD JOB ME:
+monitor sound on Rivendell
+  Maybe fixed
+  
 
 

@@ -20,6 +20,7 @@
     loader.efi.canTouchEfiVariables = true;
     kernelPackages = pkgs.linuxPackages_latest;
     initrd.kernelModules = ["amdgpu"];
+    kernelParams = [ "mitigations=off" ];
   };
 
   networking = {
