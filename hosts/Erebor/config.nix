@@ -20,7 +20,10 @@
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
     kernelPackages = pkgs.linuxPackages_latest;
-    kernelParams = ["mitigations=off"];
+    kernelParams = [
+      "mitigations=off"
+      "thinkpad_acpi.fancontrol=1"
+    ];
   };
 
   networking = {
@@ -77,6 +80,16 @@
 
     thinkfan = {
       enable = true;
+      levels = [
+        [0     0      55]
+        [1     53     60]
+        [2     58     65]
+        [3     63     70]
+        [4     68     75]
+        [5     73     80]
+        [7     78     85]
+        [127   85     32767]
+      ];
     };
   };
 
