@@ -2,6 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 {
+  self,
   config,
   lib,
   pkgs,
@@ -46,7 +47,7 @@
       enable = true;
       settings = rec {
         initial_session = {
-          command = "${pkgs.hyprland}/bin/Hyprland -c /home/alex/AshNazg/whatnamethis/hypr/hyprland.conf";
+          command = "${pkgs.hyprland}/bin/Hyprland -c ${self.outPath}/whatnamethis/hypr/Erebor/Erebor.conf";
           user = "alex";
         };
         default_session = initial_session;
@@ -81,14 +82,14 @@
     thinkfan = {
       enable = true;
       levels = [
-        [0     0      55]
-        [1     53     60]
-        [2     58     65]
-        [3     63     70]
-        [4     68     75]
-        [5     73     80]
-        [7     78     85]
-        [127   85     32767]
+        [0 0 55]
+        [1 53 60]
+        [2 58 65]
+        [3 63 70]
+        [4 68 75]
+        [5 73 80]
+        [7 78 85]
+        [127 85 32767]
       ];
     };
   };
