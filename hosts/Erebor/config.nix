@@ -47,7 +47,7 @@
       enable = true;
       settings = rec {
         initial_session = {
-          command = "${pkgs.hyprland}/bin/Hyprland -c ${self.outPath}/whatnamethis/hypr/Erebor/Erebor.conf";
+          command = "${pkgs.hyprland}/bin/Hyprland -c /home/alex/AshNazg/whatnamethis/hypr/Erebor/Erebor.conf";
           user = "alex";
         };
         default_session = initial_session;
