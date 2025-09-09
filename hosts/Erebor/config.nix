@@ -2,10 +2,12 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 {
+  inputs,
   self,
   config,
   lib,
   pkgs,
+  nixpkgs-unstable,
   ...
 }: {
   imports = [
@@ -47,7 +49,7 @@
       enable = true;
       settings = rec {
         initial_session = {
-          command = "${pkgs.hyprland}/bin/Hyprland -c /home/alex/AshNazg/whatnamethis/hypr/Erebor/Erebor.conf";
+          command = "${pkgs.hyprland}/bin/Hyprland -c ${inputs.self}/whatnamethis/hypr/Erebor/Erebor.conf";
           user = "alex";
         };
         default_session = initial_session;
@@ -106,9 +108,7 @@
 
   programs = {
     hyprland.enable = true;
-    waybar.enable = true;
     firefox.enable = true;
-    #steam.enable = true;
     zsh.enable = true;
     yazi.enable = true;
   };
@@ -120,34 +120,34 @@
     isNormalUser = true;
     extraGroups = ["wheel" "networkmanager"]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
-      tree
-      tofi
-      kitty
+      youtube-music
       obsidian
       vesktop
+    ];
+  };
+
+  environment.variables.EDITOR = "nvim";
+  environment.systemPackages =
+    (with pkgs; [
+      inputs.self.packages.${pkgs.stdenv.system}.nvim-saka
+      tree
+      wget
+      killall
+      brightnessctl
+      btop
+      wol
+      unzip
+      tofi
+      kitty
       p7zip
       hyprshot
       hyprpaper
-      youtube-music
       playerctl
-      vlc
-    ];
-  };
-  environment.variables.EDITOR = "nvim";
-  environment.systemPackages = with pkgs; [
-    wget
-    libgcc
-    gcc
-    killall
-    brightnessctl
-    btop
-    wol
-    unzip
-    #qbittorrent-cli
-    #qbittorrent
-    clinfo
-    alejandra
-  ];
+      alejandra
+    ])
+    ++ (with nixpkgs-unstable; [
+      quickshell
+    ]);
 
   fonts.packages = with pkgs; [
     nerd-fonts.hack

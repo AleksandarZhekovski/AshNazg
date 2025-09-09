@@ -1,10 +1,18 @@
 {
-  description = "AshNazg";
+  description = "AshNazg: One config to rule them all";
 
   inputs = {
-    nixpkgs.url = "github:NixOs/nixpkgs/nixos-25.05";
+    nixpkgs = {
+      url = "github:NixOs/nixpkgs/nixos-25.05";
+    };
 
-    catppuccin.url = "github:catppuccin/nix";
+    nixpkgs-unstable = {
+      url = "github:NixOs/nixpkgs/nixos-unstable";
+    };
+
+    catppuccin = {
+      url = "github:catppuccin/nix";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
@@ -16,12 +24,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nixos-hardware = {
+      url = "github:NixOS/nixos-hardware/master";
+    };
   };
 
   outputs = inputs @ {
     self,
     nixpkgs,
+    nixpkgs-unstable,
     nvf,
     home-manager,
     catppuccin,
@@ -39,11 +50,14 @@
     nixosConfigurations.Erebor = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
 
-      modules = [
-        ({pkgs, ...}: {
-          environment.systemPackages = [self.packages.${pkgs.stdenv.system}.nvim-saka];
-        })
+      specialArgs = {
+        inherit inputs;
+        nixpkgs-unstable = import nixpkgs-unstable {
+          system = "x86_64-linux";
+        };
+      };
 
+      modules = [
         nixos-hardware.nixosModules.lenovo-thinkpad-l13
 
         ./hosts/Erebor/config.nix
@@ -77,7 +91,6 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.alex = {
-
             imports = [
               ./hosts/Rivendell/home.nix
               catppuccin.homeModules.catppuccin
