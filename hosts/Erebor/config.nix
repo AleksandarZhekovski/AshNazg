@@ -3,8 +3,6 @@
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 {
   inputs,
-  self,
-  config,
   lib,
   pkgs,
   nixpkgs-unstable,

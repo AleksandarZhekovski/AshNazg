@@ -2,9 +2,10 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 {
-  config,
+  inputs,
   lib,
   pkgs,
+  nixpkgs-unstable,
   ...
 }: {
   imports = [
@@ -20,7 +21,7 @@
     loader.efi.canTouchEfiVariables = true;
     kernelPackages = pkgs.linuxPackages_latest;
     initrd.kernelModules = ["amdgpu"];
-    kernelParams = [ "mitigations=off" ];
+    kernelParams = ["mitigations=off"];
   };
 
   networking = {
@@ -35,7 +36,7 @@
       enable = true;
       settings = rec {
         initial_session = {
-          command = "${pkgs.hyprland}/bin/Hyprland -c /home/alex/AshNazg/whatnamethis/hypr/hyprland.conf";
+          command = "${pkgs.hyprland}/bin/Hyprland -c ${inputs.self}/whatnamethis/hypr/Rivendell/Rivendell.conf";
           user = "alex";
         };
         default_session = initial_session;
@@ -79,7 +80,6 @@
 
   programs = {
     hyprland.enable = true;
-    waybar.enable = true;
     firefox.enable = true;
     steam.enable = true;
     zsh.enable = true;
@@ -93,39 +93,39 @@
     isNormalUser = true;
     extraGroups = ["wheel" "networkmanager"]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
-      tree
-      tofi
-      kitty
       obsidian
       vesktop
       p7zip
-      hyprshot
-      hyprpaper
       lutris-free
       via
       youtube-music
-      playerctl
-      wine
-      winetricks
-      vlc
     ];
   };
   environment.variables.EDITOR = "nvim";
-  environment.systemPackages = with pkgs; [
-    nano
-    wget
-    libgcc
-    gcc
-    killall
-    brightnessctl
-    btop
-    wol
-    unzip
-    qbittorrent-cli
-    qbittorrent
-    clinfo
-    alejandra
-  ];
+  environment.systemPackages =
+    (with pkgs; [
+      inputs.self.packages.${pkgs.stdenv.system}.nvim-saka
+      tree
+      tofi
+      kitty
+      hyprshot
+      hyprpaper
+      playerctl
+      nano
+      wget
+      killall
+      brightnessctl
+      btop
+      wol
+      unzip
+      # qbittorrent-cli
+      # qbittorrent
+      clinfo
+      alejandra
+    ])
+    ++ (with nixpkgs-unstable; [
+      quickshell
+    ]);
 
   fonts.packages = with pkgs; [
     nerd-fonts.hack

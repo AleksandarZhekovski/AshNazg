@@ -79,11 +79,14 @@
     # Rivendell, big home computer used for gaming, coding, studying and much more
     nixosConfigurations.Rivendell = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      modules = [
-        ({pkgs, ...}: {
-          environment.systemPackages = [self.packages.${pkgs.stdenv.system}.nvim-saka];
-        })
 
+      specialArgs = {
+        inherit inputs;
+        nixpkgs-unstable = import nixpkgs-unstable {
+          system = "x86_64-linux";
+        };
+      };
+      modules = [
         ./hosts/Rivendell/config.nix
 
         home-manager.nixosModules.home-manager
