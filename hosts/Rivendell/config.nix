@@ -97,7 +97,7 @@
       vesktop
       p7zip
       lutris-free
-      via
+      # via
       youtube-music
     ];
   };
