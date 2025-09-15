@@ -25,6 +25,13 @@ nvf tweeking
 MODLUES/BUNDLES !!!!!
   Can't keep tweeking things for both machines
 
+Greeter
+
+Autostarter, the nix way????
+
+fix tofi
+
+
 
 
 GOOD JOB ME:
