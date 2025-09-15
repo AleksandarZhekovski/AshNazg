@@ -11,7 +11,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ../tuigreet/greeter.nix 
+    ../../whatnamethis/tuigreet/greeter.nix 
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
