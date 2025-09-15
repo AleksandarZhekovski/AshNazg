@@ -11,6 +11,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ../tuigreet/greeter.nix 
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
@@ -32,17 +33,6 @@
   time.timeZone = "Europe/Sofia";
 
   services = {
-    greetd = {
-      enable = true;
-      settings = rec {
-        initial_session = {
-          command = "${pkgs.hyprland}/bin/Hyprland -c ${inputs.self}/whatnamethis/hypr/Rivendell/Rivendell.conf";
-          user = "alex";
-        };
-        default_session = initial_session;
-      };
-    };
-
     openssh = {
       enable = true;
       ports = [2024];
@@ -73,11 +63,13 @@
     powerOnBoot = true;
   };
 
-  hardware.graphics.extraPackages = with pkgs; [
-    rocmPackages.clr.icd
-    amdvlk
-  ];
-
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      rocmPackages.clr.icd
+      amdvlk
+    ];
+  };
   programs = {
     hyprland.enable = true;
     firefox.enable = true;

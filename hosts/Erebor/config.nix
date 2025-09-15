@@ -109,6 +109,7 @@
     firefox.enable = true;
     zsh.enable = true;
     yazi.enable = true;
+    btop.enable = true;
   };
 
   users.defaultUserShell = pkgs.zsh;
@@ -132,7 +133,6 @@
       wget
       killall
       brightnessctl
-      btop
       wol
       unzip
       tofi
@@ -151,16 +151,17 @@
     nerd-fonts.hack
   ];
 
-  nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) [
-      "obsidian"
-      "steam"
-      "steam-original"
-      "steam-unwrapped"
-      "steam-run"
-      "zerotierone"
-    ];
-
+  nixpkgs.config = {
+    allowUnfreePredicate = pkg:
+      builtins.elem (lib.getName pkg) [
+        "obsidian"
+        "steam"
+        "steam-original"
+        "steam-unwrapped"
+        "steam-run"
+        "zerotierone"
+      ];
+  };
   # List packages installed in system profile. To search, run:
   # $ nix search wget
 
