@@ -12,6 +12,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./greeter.nix 
+    ../nixModlues/nvf.nix
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];

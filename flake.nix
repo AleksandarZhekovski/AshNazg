@@ -40,13 +40,8 @@
     ...
   }: {
     # Something to do with nvf
-    packages.x86_64-linux.nvim-saka =
-      (nvf.lib.neovimConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        modules = [./whatnamethis/nvf-config.nix];
-      }).neovim;
 
-    # Erebor: Thinkpad laptop used for studying and coding
+      # Erebor: Thinkpad laptop used for studying and coding
     nixosConfigurations.Erebor = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
 
