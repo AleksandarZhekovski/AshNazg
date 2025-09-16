@@ -11,8 +11,9 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ./greeter.nix 
-    ../nixModlues/nvf.nix
+    ./greeter.nix
+
+    ../../nixModlues/nvf.nix
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
@@ -97,7 +98,6 @@
   environment.variables.EDITOR = "nvim";
   environment.systemPackages =
     (with pkgs; [
-      inputs.self.packages.${pkgs.stdenv.system}.nvim-saka
       tree
       tofi
       kitty
