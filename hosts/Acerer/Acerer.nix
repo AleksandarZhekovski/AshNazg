@@ -1,5 +1,6 @@
 {
   inputs,
+  config,
   lib,
   pkgs,
   ...
@@ -18,7 +19,7 @@
       device = "/dev/sda";
     };
 
-    kernelModules = ["mitigations=off"];
+    kernelParams = ["mitigations=off"];
   };
 
   networking = {
@@ -47,11 +48,22 @@
     vlc
     wayland-utils
     wl-clipboard
+
+    nano
+    brightnessctl
+    btop
+    wol
+    unzip
   ];
 
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
-    konsole
   ];
+
+  programs = {
+    firefox.enable = true;
+    zsh.enable = true;
+    yazi.enable = true;
+  };
 
   services = {
     pipewire = {
@@ -76,6 +88,14 @@
       plasma6.enable = true;
     };
   };
+
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getNamo pkg) [
+      "nvidia-settings"
+      "nvidia-persistenced"
+    ];
+
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_390;
 
   system.stateVersion = "25.05";
 }
