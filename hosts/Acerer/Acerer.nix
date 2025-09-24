@@ -1,5 +1,5 @@
 {
-  inpurt,
+  inputs,
   lib,
   pkgs,
   ...
