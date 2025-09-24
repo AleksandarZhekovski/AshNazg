@@ -42,7 +42,7 @@
 
     kdePackages.ksystemlog
     kdePackages.sddm-kcm
-    
+
     hardinfo2
     vlc
     wayland-utils
@@ -69,8 +69,8 @@
 
     desktopManager = {
       plasma6.enable = true;
-      # ssdm.enable = true;
-      # sddm.wayland.enable = true;
+      ssdm.enable = true;
+      sddm.wayland.enable = true;
     };
   };
 
