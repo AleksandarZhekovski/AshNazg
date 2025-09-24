@@ -41,7 +41,7 @@
   }: {
     # Something to do with nvf
 
-      # Erebor: Thinkpad laptop used for studying and coding
+    # Erebor: Thinkpad laptop used for studying and coding
     nixosConfigurations.Erebor = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
 
@@ -95,6 +95,14 @@
             ];
           };
         }
+      ];
+    };
+
+    nixosConfigurations.Acerer = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+
+      modules = [
+        ./hosts/Acerer/Acerer.nix
       ];
     };
   };
