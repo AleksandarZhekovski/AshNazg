@@ -91,7 +91,7 @@
           home-manager.users.alex = {
             imports = [
               ./hosts/Rivendell/home.nix
-              catppuccin.homeModules.catppuccin
+              # catppuccin.homeModules.catppuccin
             ];
           };
         }

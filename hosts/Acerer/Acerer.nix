@@ -68,9 +68,12 @@
     };
 
     displayManager = {
-      plasma6.enable = true;
-      ssdm.enable = true;
+      sddm.enable = true;
       sddm.wayland.enable = true;
+    };
+
+    desktopManager = {
+      plasma6.enable = true;
     };
   };
 
