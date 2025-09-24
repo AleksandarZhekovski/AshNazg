@@ -31,15 +31,15 @@
   #   };
   # };
   #
-  catppuccin = {
-    enable = true;
-    flavor = "mocha";
-    accent = "mauve";
-
-    cursors.enable = true;
-    # gtk.enable = true;
-    yazi.enable = true;
-  };
-
+  # catppuccin = {
+  #   enable = true;
+  #   flavor = "mocha";
+  #   accent = "mauve";
+  #
+  #   cursors.enable = true;
+  #   # gtk.enable = true;
+  #   yazi.enable = true;
+  # };
+  #
   home.stateVersion = "25.05";
 }
