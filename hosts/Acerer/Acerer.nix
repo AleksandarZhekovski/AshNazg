@@ -64,10 +64,16 @@
     btop
     wol
     unzip
+    qbittorent
   ];
 
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
   ];
+
+  environment.sessionVariables = {
+    TERM = "konsole";
+  };
+
 
   programs = {
     firefox.enable = true;
