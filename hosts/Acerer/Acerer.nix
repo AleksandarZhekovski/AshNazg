@@ -6,12 +6,16 @@
 }: {
   imports = [
     ./hardware-configuration.nix
+
+    ../../nixModlues/nvf.nix
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda";
+
+  boot.kernelModules = ["mitigations=off"];
 
   networking.hostName = "Acerer";
 
@@ -39,7 +43,15 @@
     git
   ];
 
-  services.openssh.enable = true;
+  services = {
+    openssh = {
+      enable = true;
+      ports = [2024];
+      settings = {
+        PasswordAuthentication = true;
+      };
+    };
+  };
 
   system.stateVersion = "25.05";
 }
