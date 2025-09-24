@@ -12,23 +12,21 @@
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sda";
+  boot = {
+    loader.grub = {
+      enable = true;
+      device = "/dev/sda";
+    };
 
-  boot.kernelModules = ["mitigations=off"];
+    kernelModules = ["mitigations=off"];
+  };
 
-  networking.hostName = "Acerer";
-
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "Acerer";
+    networkmanager.enable = true;
+  };
 
   time.timeZone = "Europe/Sofia";
-
-  services = {
-    pipewire = {
-      enable = true;
-      pulse.enable = true;
-    };
-  };
 
   users.users.alex = {
     isNormalUser = true;
@@ -41,15 +39,38 @@
     neovim
     wget
     git
+
+    kdePackages.ksystemlog
+    kdePackages.sddm-kcm
+    
+    hardinfo2
+    vlc
+    wayland-utils
+    wl-clipboard
+  ];
+
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    konsole
   ];
 
   services = {
+    pipewire = {
+      enable = true;
+      pulse.enable = true;
+    };
+
     openssh = {
       enable = true;
       ports = [2024];
       settings = {
         PasswordAuthentication = true;
       };
+    };
+
+    desktopManager = {
+      plasma6.enable = true;
+      # ssdm.enable = true;
+      # sddm.wayland.enable = true;
     };
   };
 

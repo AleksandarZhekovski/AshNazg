@@ -109,7 +109,7 @@
     firefox.enable = true;
     zsh.enable = true;
     yazi.enable = true;
-    btop.enable = true;
+    # btop.enable = true;
   };
 
   users.defaultUserShell = pkgs.zsh;
@@ -128,7 +128,6 @@
   environment.variables.EDITOR = "nvim";
   environment.systemPackages =
     (with pkgs; [
-      inputs.self.packages.${pkgs.stdenv.system}.nvim-saka
       tree
       wget
       killall
