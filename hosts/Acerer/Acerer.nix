@@ -47,8 +47,8 @@
   };
 
   environment.systemPackages = with pkgs; [
-    neovim
     wget
+    curl
     git
 
     kdePackages.ksystemlog
@@ -59,6 +59,7 @@
     wayland-utils
     wl-clipboard
 
+    kitty
     nano
     brightnessctl
     btop
@@ -68,6 +69,7 @@
   ];
 
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    konsole
   ];
 
   environment.sessionVariables = {
