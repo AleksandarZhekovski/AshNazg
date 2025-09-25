@@ -8,7 +8,8 @@
   imports = [
     ./hardware-configuration.nix
 
-    # ../../nixModlues/nvf.nix
+     ../../nixModules/nvf/nvf.nix
+     ../../nixModlues/ssh/ssh.nix
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
@@ -43,7 +44,6 @@
       isNormalUser = true;
       extraGroups = ["wheel"];
     };
-
   };
 
   environment.systemPackages = with pkgs; [
@@ -74,7 +74,6 @@
     TERM = "konsole";
   };
 
-
   programs = {
     firefox.enable = true;
     zsh.enable = true;
@@ -85,14 +84,6 @@
     pipewire = {
       enable = true;
       pulse.enable = true;
-    };
-
-    openssh = {
-      enable = true;
-      ports = [2024];
-      settings = {
-        PasswordAuthentication = true;
-      };
     };
 
     displayManager = {
