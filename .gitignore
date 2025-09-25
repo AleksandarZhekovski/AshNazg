@@ -1,1 +1,3 @@
 whatnamethis/ssh/
+hosts/Rivendell/ssh_authorized_keys
+hosts/Erebor/ssh_authorized_keys

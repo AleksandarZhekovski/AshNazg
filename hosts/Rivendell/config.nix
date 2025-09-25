@@ -94,6 +94,8 @@
       # via
       youtube-music
     ];
+    openssh.authorizedKeys.keyFiles = [ ./ssh_authorized_keys ];
+
   };
   environment.variables.EDITOR = "nvim";
   environment.systemPackages =
