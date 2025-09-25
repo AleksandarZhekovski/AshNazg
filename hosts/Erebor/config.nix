@@ -11,6 +11,9 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+
+    ../../nixModules/nvf/nvf.nix
+    ../../nixModules/ssh/ssh.nix
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
@@ -34,14 +37,6 @@
 
   time.timeZone = "Europe/Sofia";
 
-  # fileSystems."/home/alex/journal" = {
-  #   device = "/dev/disk/by-id/usb-USB_Flash_Disk_CCYYMMDDHHmmSS8V82LB-0:0";
-  #   fsType = "ext4";
-  #   options = [
-  #     "users"
-  #     "nofail"
-  #   ];
-  # };
   services = {
     greetd = {
       enable = true;
@@ -51,14 +46,6 @@
           user = "alex";
         };
         default_session = initial_session;
-      };
-    };
-
-    openssh = {
-      enable = true;
-      ports = [2024];
-      settings = {
-        PasswordAuthentication = true;
       };
     };
 
@@ -109,7 +96,6 @@
     firefox.enable = true;
     zsh.enable = true;
     yazi.enable = true;
-    # btop.enable = true;
   };
 
   users.defaultUserShell = pkgs.zsh;

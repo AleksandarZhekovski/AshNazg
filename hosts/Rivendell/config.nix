@@ -13,7 +13,8 @@
     ./hardware-configuration.nix
     ./greeter.nix
 
-    ../../nixModlues/nvf.nix
+    ../../nixModules/nvf/nvf.nix
+    ../../nixModules/ssh/ssh.nix
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
@@ -35,22 +36,12 @@
   time.timeZone = "Europe/Sofia";
 
   services = {
-    openssh = {
-      enable = true;
-      ports = [2024];
-      settings = {
-        PasswordAuthentication = true;
-      };
-    };
-
     zerotierone = {
       enable = true;
       joinNetworks = [
         "363c67c55a84e9d4"
       ];
     };
-
-    blueman.enable = true;
 
     pipewire = {
       enable = true;
@@ -63,6 +54,15 @@
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
+    settings = {
+      General = {
+        Experimental = true;
+        FastConnectable = true;
+      };
+      Policy = {
+        AutoEnable = true;
+      };
+    };
   };
 
   hardware.graphics = {
@@ -89,18 +89,17 @@
     packages = with pkgs; [
       obsidian
       vesktop
-      p7zip
       lutris-free
       # via
       youtube-music
     ];
-    openssh.authorizedKeys.keyFiles = [ ./ssh_authorized_keys ];
-
   };
   environment.variables.EDITOR = "nvim";
+  environment.variables.TERM = "xterm-kitty";
   environment.systemPackages =
     (with pkgs; [
       tree
+      p7zip
       tofi
       kitty
       hyprshot

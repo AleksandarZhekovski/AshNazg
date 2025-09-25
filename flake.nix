@@ -10,10 +10,6 @@
       url = "github:NixOs/nixpkgs/nixos-unstable";
     };
 
-    catppuccin = {
-      url = "github:catppuccin/nix";
-    };
-
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -35,41 +31,39 @@
     nixpkgs-unstable,
     nvf,
     home-manager,
-    catppuccin,
     nixos-hardware,
     ...
   }: {
     # Something to do with nvf
 
     # Erebor: Thinkpad laptop used for studying and coding
-    # nixosConfigurations.Erebor = nixpkgs.lib.nixosSystem {
-    #   system = "x86_64-linux";
-    #
-    #   specialArgs = {
-    #     inherit inputs;
-    #     nixpkgs-unstable = import nixpkgs-unstable {
-    #       system = "x86_64-linux";
-    #     };
-    #   };
-    #
-    #   modules = [
-    #     nixos-hardware.nixosModules.lenovo-thinkpad-l13
-    #
-    #     ./hosts/Erebor/config.nix
-    #
-    #     home-manager.nixosModules.home-manager
-    #     {
-    #       home-manager.useGlobalPkgs = true;
-    #       home-manager.useUserPackages = true;
-    #       home-manager.users.alex = {
-    #         imports = [
-    #           ./hosts/Erebor/home.nix
-    #           catppuccin.homeModules.catppuccin
-    #         ];
-    #       };
-    #     }
-    #   ];
-    # };
+    nixosConfigurations.Erebor = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+
+      specialArgs = {
+        inherit inputs;
+        nixpkgs-unstable = import nixpkgs-unstable {
+          system = "x86_64-linux";
+        };
+      };
+
+      modules = [
+        nixos-hardware.nixosModules.lenovo-thinkpad-l13
+
+        ./hosts/Erebor/config.nix
+
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.alex = {
+            imports = [
+              ./hosts/Erebor/home.nix
+            ];
+          };
+        }
+      ];
+    };
 
     # Rivendell, big home computer used for gaming, coding, studying and much more
     nixosConfigurations.Rivendell = nixpkgs.lib.nixosSystem {
@@ -91,7 +85,6 @@
           home-manager.users.alex = {
             imports = [
               ./hosts/Rivendell/home.nix
-              # catppuccin.homeModules.catppuccin
             ];
           };
         }
