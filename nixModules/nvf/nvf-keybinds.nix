@@ -1,57 +1,57 @@
 {...}: {
-  programs.nvf = {
-    settings = {
-      vim = {
-        keymaps = [
-          {
-            desc = "Toggle Neotree";
-            key = "<leader>e";
+  programs.nvf.settings.vim.keymaps = [
+    {
+      desc = "Toggle Neotree";
+      key = "<leader>e";
 
-            mode = "n";
-            action = ":Neotree toggle<CR>";
-          }
+      mode = "n";
+      action = ":Neotree toggle<CR>";
+    }
 
-          {
-            desc = "Prevus buffer";
-            key = "H";
+    {
+      desc = "Prevus buffer";
+      key = "H";
 
-            mode = "n";
-            action = ":bn <CR>";
-            noremap = false;
-          }
+      mode = "n";
+      action = ":bn <CR>";
+      noremap = false;
+    }
 
-          {
-            desc = "Next buffer";
-            key = "L";
+    {
+      desc = "Next buffer";
+      key = "L";
 
-            mode = "n";
-            action = ":bp <CR>";
-            noremap = false;
-          }
+      mode = "n";
+      action = ":bp <CR>";
+      noremap = false;
+    }
 
-          {
-            desc = "Close current buffer";
-            key = "Q";
+    {
+      desc = "Close current buffer";
+      key = "Q";
 
-            mode = "n";
-            action = "bd";
-            noremap = false;
-          }
+      mode = "n";
+      action = ":bp<bar>sp<bar>bn<bar>bd<CR>";
+      noremap = false;
+    }
 
-          {
-            key = "q";
-            desc = "fuck macros";
-            
-            mode = ["n" "v" "c"];
-            action = "";
-            noremap = false;
-          }
-        ];
+    {
+      desc = "Quit";
+      key = "q";
 
-        binds = {
-          whichKey.enable = true;
-        };
-      };
-    };
-  };
+      mode = ["n"];
+      action = ":quit <CR>";
+      noremap = false;
+    }
+
+    {
+      desc = "Write all";
+      key = "<C-s>";
+
+      mode = "n";
+      action = ":wall <CR>";
+    }
+  ];
+
+  programs.nvf.settings.vim.binds.whichKey.enable = true;
 }
