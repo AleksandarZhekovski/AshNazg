@@ -2,7 +2,6 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 {
-  inputs,
   lib,
   pkgs,
   nixpkgs-unstable,
@@ -129,6 +128,7 @@
       "steam-original"
       "steam-unwrapped"
       "steam-run"
+      "zerotierone"
     ];
 
   # List packages installed in system profile. To search, run:

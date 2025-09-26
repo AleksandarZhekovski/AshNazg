@@ -65,7 +65,7 @@
     btop
     wol
     unzip
-    qbittorent
+    qbittorrent
   ];
 
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
@@ -102,6 +102,7 @@
     builtins.elem (lib.getName pkg) [
       "nvidia-settings"
       "nvidia-persistenced"
+      "zerotierone"
     ];
 
   hardware = {

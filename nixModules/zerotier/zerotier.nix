@@ -1,8 +1,7 @@
 {lib, ...}: {
-  nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) [
-      "zerotierone"
-    ];
+  # nixpkgs.config.allowUnfreePredicate = pkg:
+  #   builtins.elem (lib.getName pkg) ++ [
+  #   ];
 
   services.zerotierone = {
     enable = true;
