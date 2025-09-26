@@ -1,5 +1,4 @@
 {
-  inputs,
   config,
   lib,
   pkgs,
@@ -9,7 +8,7 @@
     ./hardware-configuration.nix
 
     ../../nixModules/nvf/nvf.nix
-    ../../nixModlues/ssh/ssh.nix
+    ../../nixModules/ssh/ssh.nix
     ../../nixModules/zerotier/zerotier.nix
   ];
 
@@ -100,7 +99,7 @@
   };
 
   nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getNamo pkg) [
+    builtins.elem (lib.getName pkg) [
       "nvidia-settings"
       "nvidia-persistenced"
     ];
