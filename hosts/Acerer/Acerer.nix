@@ -8,8 +8,9 @@
   imports = [
     ./hardware-configuration.nix
 
-     ../../nixModules/nvf/nvf.nix
-     ../../nixModlues/ssh/ssh.nix
+    ../../nixModules/nvf/nvf.nix
+    ../../nixModlues/ssh/ssh.nix
+    ../../nixModules/zerotier/zerotier.nix
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
@@ -73,7 +74,7 @@
   ];
 
   environment.sessionVariables = {
-    TERM = "konsole";
+    TERM = "xterm-kitty";
   };
 
   programs = {

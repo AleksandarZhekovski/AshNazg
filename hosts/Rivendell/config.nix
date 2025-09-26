@@ -15,6 +15,7 @@
 
     ../../nixModules/nvf/nvf.nix
     ../../nixModules/ssh/ssh.nix
+    ../../nixModules/zerotier/zerotier.nix
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
@@ -36,13 +37,6 @@
   time.timeZone = "Europe/Sofia";
 
   services = {
-    zerotierone = {
-      enable = true;
-      joinNetworks = [
-        "363c67c55a84e9d4"
-      ];
-    };
-
     pipewire = {
       enable = true;
       pulse.enable = true;
