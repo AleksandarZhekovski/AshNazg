@@ -129,7 +129,6 @@
       "steam-original"
       "steam-unwrapped"
       "steam-run"
-      "zerotierone"
     ];
 
   # List packages installed in system profile. To search, run:
