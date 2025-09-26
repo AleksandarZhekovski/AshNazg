@@ -94,8 +94,11 @@
       youtube-music
     ];
   };
-  environment.variables.EDITOR = "nvim";
-  environment.variables.TERM = "xterm-kitty";
+  environment = {
+    sessionVariables.NIXOS_OZONE_WL = "1";
+    variables.EDITOR = "nvim";
+    variables.TERM = "xterm-kitty";
+  };
   environment.systemPackages =
     (with pkgs; [
       tree

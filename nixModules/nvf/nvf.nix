@@ -1,6 +1,7 @@
-{inputs, ...}: {
+{inputs, ...}: rec {
   imports = [
     inputs.nvf.nixosModules.default
+    ./nvf-keybinds.nix
   ];
   programs.nvf = {
     enable = true;
@@ -48,17 +49,6 @@
           };
         };
 
-        keymaps = [
-          {
-            key = "<leader>e";
-            mode = "n";
-            silent = true;
-            action = ":Neotree toggle<CR>";
-          }
-        ];
-        binds = {
-          whichKey.enable = true;
-        };
 
         git = {
           enable = true;
