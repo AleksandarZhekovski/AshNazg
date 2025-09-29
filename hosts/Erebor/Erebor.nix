@@ -11,9 +11,11 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ./greeter.nix
 
     ../../nixModules/nvf/nvf.nix
     ../../nixModules/ssh/ssh.nix
+    ../../nixModules/zerotier/zerotier.nix
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
@@ -38,25 +40,7 @@
   time.timeZone = "Europe/Sofia";
 
   services = {
-    greetd = {
-      enable = true;
-      settings = rec {
-        initial_session = {
-          command = "${pkgs.hyprland}/bin/Hyprland -c ${inputs.self}/whatnamethis/hypr/Erebor/Erebor.conf";
-          user = "alex";
-        };
-        default_session = initial_session;
-      };
-    };
-
     fwupd.enable = true;
-
-    zerotierone = {
-      enable = true;
-      joinNetworks = [
-        "363c67c55a84e9d4"
-      ];
-    };
 
     blueman.enable = true;
     pipewire = {
