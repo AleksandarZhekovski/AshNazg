@@ -54,12 +54,14 @@
 
         home-manager.nixosModules.home-manager
         {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.alex = {
-            imports = [
-              ./hosts/Erebor/home.nix
-            ];
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users.alex = {
+              imports = [
+                ./hosts/Erebor/home.nix
+              ];
+            };
           };
         }
       ];
@@ -80,12 +82,14 @@
 
         home-manager.nixosModules.home-manager
         {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.alex = {
-            imports = [
-              ./hosts/Rivendell/home.nix
-            ];
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users.alex = {
+              imports = [
+                ./hosts/Rivendell/home.nix
+              ];
+            };
           };
         }
       ];

@@ -6,7 +6,6 @@ Persistant sorage usb nixos
 
 Popups on volume/brightness control
 
-get rid of catppuccin
 
 hjem
 
@@ -25,9 +24,7 @@ nvf tweeking
 MODLUES/BUNDLES !!!!!
   Can't keep tweeking things for both machines
 
-Greeter
 
-Autostarter, the nix way????
 
 fix tofi
 
@@ -35,8 +32,10 @@ fix tofi
 
 
 GOOD JOB ME:
-monitor sound on Rivendell
-  Maybe fixed
-  
+  monitor sound on Rivendell
+  get rid of catppuccin
+  Greeter
+    Autostarter, the nix way????
+    
 
 

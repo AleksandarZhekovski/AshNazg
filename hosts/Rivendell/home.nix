@@ -16,6 +16,8 @@
       theme = "kafeitu";
     };
   };
+
+  users.defaultUserShell = pkgs.zsh;
   # basic configuration of git, please change to your own
   programs.git = {
     enable = true;
