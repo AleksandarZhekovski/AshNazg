@@ -1,4 +1,6 @@
 {...}: {
+  programs.nvf.settings.vim.binds.whichKey.enable = true;
+
   programs.nvf.settings.vim.keymaps = [
     {
       desc = "Toggle Neotree";
@@ -13,7 +15,7 @@
       key = "H";
 
       mode = "n";
-      action = ":bn <CR>";
+      action = ":bn<CR>";
       noremap = false;
     }
 
@@ -22,7 +24,7 @@
       key = "L";
 
       mode = "n";
-      action = ":bp <CR>";
+      action = ":bp<CR>";
       noremap = false;
     }
 
@@ -40,7 +42,7 @@
       key = "q";
 
       mode = ["n"];
-      action = ":quit <CR>";
+      action = ":quit<CR>";
       noremap = false;
     }
 
@@ -48,10 +50,9 @@
       desc = "Write all";
       key = "<C-s>";
 
-      mode = "n";
-      action = ":wall <CR>";
+      mode = ["n" "i"];
+      action = "<Esc>:wall<CR>";
     }
   ];
 
-  programs.nvf.settings.vim.binds.whichKey.enable = true;
 }

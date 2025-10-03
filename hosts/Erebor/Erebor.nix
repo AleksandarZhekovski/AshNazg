@@ -70,10 +70,6 @@
     powerOnBoot = true;
   };
 
-  hardware.graphics.extraPackages = with pkgs; [
-    # rocmPackages.clr.icd
-    # amdvlk
-  ];
 
   programs = {
     hyprland.enable = true;
