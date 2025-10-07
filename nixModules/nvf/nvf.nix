@@ -9,7 +9,7 @@
     settings = {
       vim = {
         options = {
-          tabstop = 2;
+          tabstop = 4;
           shiftwidth = 2;
         };
 
