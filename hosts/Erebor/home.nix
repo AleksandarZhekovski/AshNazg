@@ -24,6 +24,13 @@
     userEmail = "aleksandarzhekovski@protonmail.com";
   };
 
+  home.pointerCursor = {
+    gtk.enable = true;
+    package = pkgs.phinger-cursors;
+    name = "phinger-cursors-dark";
+    size = 32;
+  };
+
   # services.udiskie = {
   #   enable = true;
   #   settings = {
