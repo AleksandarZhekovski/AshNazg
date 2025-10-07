@@ -13,9 +13,9 @@
     ./hardware-configuration.nix
     ./greeter.nix
 
-    ../../nixModules/nvf/nvf.nix
-    ../../nixModules/ssh/ssh.nix
-    ../../nixModules/zerotier/zerotier.nix
+    ../../nixModules/nvf
+    ../../nixModules/ssh
+    ../../nixModules/zerotier
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];

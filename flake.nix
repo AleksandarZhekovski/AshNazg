@@ -50,7 +50,7 @@
       modules = [
         nixos-hardware.nixosModules.lenovo-thinkpad-l13
 
-        ./hosts/Erebor/Erebor.nix
+        ./hosts/Erebor
 
         home-manager.nixosModules.home-manager
         {
@@ -78,7 +78,7 @@
         };
       };
       modules = [
-        ./hosts/Rivendell/Rivendell.nix
+        ./hosts/Rivendell
 
         home-manager.nixosModules.home-manager
         {
@@ -101,7 +101,7 @@
       specialArgs = {inherit inputs;};
 
       modules = [
-        ./hosts/Acerer/Acerer.nix
+        ./hosts/Acerer
       ];
     };
   };
