@@ -17,11 +17,17 @@
     ../../nixModules/ssh
     ../../nixModules/zerotier
     ../../nixModules/misc
+    ../../nixModules/verilog
+    ../../nixModules/hyprland
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
-  options.timezone = "Plovdiv";
+  basePkgs.enable = true;
+
+  hyprland.enable = true;
+
+  verilog.enable = true;
 
   home-manager.backupFileExtension = "backup";
   # Use the systemd-boot EFI boot loader.
@@ -74,7 +80,6 @@
   };
 
   programs = {
-    hyprland.enable = true;
     firefox.enable = true;
     zsh.enable = true;
     yazi.enable = true;
@@ -96,17 +101,11 @@
   environment.variables.EDITOR = "nvim";
   environment.systemPackages =
     (with pkgs; [
-      tree
-      wget
-      killall
       brightnessctl
-      wol
       unzip
       tofi
       kitty
       p7zip
-      hyprshot
-      hyprpaper
       playerctl
       alejandra
     ])

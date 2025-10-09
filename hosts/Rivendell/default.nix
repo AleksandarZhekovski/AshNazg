@@ -17,12 +17,14 @@
     ../../nixModules/zerotier
     ../../nixModules/misc
     ../../nixModules/hyprland
+    ../../nixModules/verilog
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
   
   basePkgs.enable = true;
   hyprland.enable = true;
+  verilog.enable = true;
 
   # Use the systemd-boot EFI boot loader.
   boot = {
