@@ -15,9 +15,14 @@
     ../../nixModules/nvf
     ../../nixModules/ssh
     ../../nixModules/zerotier
+    ../../nixModules/misc
+    ../../nixModules/hyprland
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
+  
+  basePkgs.enable = true;
+  hyprland.enable = true;
 
   # Use the systemd-boot EFI boot loader.
   boot = {
@@ -66,7 +71,6 @@
     ];
   };
   programs = {
-    hyprland.enable = true;
     firefox.enable = true;
     steam.enable = true;
     zsh.enable = true;
@@ -94,19 +98,12 @@
   };
   environment.systemPackages =
     (with pkgs; [
-      tree
       p7zip
       tofi
       kitty
-      hyprshot
-      hyprpaper
       playerctl
       nano
-      wget
-      killall
       brightnessctl
-      btop
-      wol
       unzip
       # qbittorrent-cli
       # qbittorrent

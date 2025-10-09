@@ -1,11 +1,6 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
-  options = with lib; {
-    timezone = mkOption {
-      type = types.str;
-    };
-  };
+{...}: {
+  imports = [
+    ./basePkgs.nix
+    ./timezone.nix
+  ];
 }
