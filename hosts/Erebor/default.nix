@@ -16,9 +16,12 @@
     ../../nixModules/nvf
     ../../nixModules/ssh
     ../../nixModules/zerotier
+    ../../nixModules/misc
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
+
+  options.timezone = "Plovdiv";
 
   home-manager.backupFileExtension = "backup";
   # Use the systemd-boot EFI boot loader.
@@ -69,7 +72,6 @@
     enable = true;
     powerOnBoot = true;
   };
-
 
   programs = {
     hyprland.enable = true;
