@@ -1,5 +1,6 @@
 {...}: {
   imports = [
+    ./gaming
     ./hyprland
     ./misc
     ./nvf
