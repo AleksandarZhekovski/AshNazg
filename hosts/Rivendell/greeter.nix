@@ -7,7 +7,7 @@
     enable = true;
     settings = {
       initial_session = {
-        command = "${pkgs.hyprland}/bin/hyprland -c ${inputs.self}/whatnamethis/hypr/Rivendell/Rivendell.conf";
+        command = "${pkgs.hyprland}/bin/hyprland -c /home/alex/AshNazg/whatnamethis/hypr/Rivendell/Rivendell.conf";
         user = "alex";
       };
       default_session = {
