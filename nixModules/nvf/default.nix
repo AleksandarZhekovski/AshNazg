@@ -6,6 +6,7 @@
   ];
 
   environment.systemPackages = with pkgs; [ alejandra ];
+  environment.variables.EDITOR = "nvim";
 
   programs.nvf = {
     enable = true;

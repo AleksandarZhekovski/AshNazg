@@ -12,12 +12,7 @@
     ./hardware-configuration.nix
     ./greeter.nix
 
-    ../../nixModules/nvf
-    ../../nixModules/ssh
-    ../../nixModules/zerotier
-    ../../nixModules/misc
-    ../../nixModules/hyprland
-    ../../nixModules/verilog
+    ../../nixModules
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
@@ -25,6 +20,7 @@
   basePkgs.enable = true;
   hyprland.enable = true;
   verilog.enable = true;
+  zerotier.enable = true;
 
   # Use the systemd-boot EFI boot loader.
   boot = {
@@ -80,25 +76,12 @@
   users.defaultUserShell = pkgs.zsh;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.alex = {
-    isNormalUser = true;
-    extraGroups = ["wheel" "networkmanager"]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [
-      obsidian
-      vesktop
-      lutris-free
-      # via
-      youtube-music
-    ];
-  };
   environment = {
     sessionVariables.NIXOS_OZONE_WL = "1";
-    variables.EDITOR = "nvim";
     variables.TERM = "xterm-kitty";
   };
   environment.systemPackages = with pkgs; [
     kitty
-    playerctl
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg:
