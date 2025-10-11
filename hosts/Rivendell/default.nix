@@ -4,7 +4,7 @@
 {
   lib,
   pkgs,
-  nixpkgs-unstable,
+  pkgs-unstable,
   ...
 }: {
   imports = [
@@ -21,7 +21,7 @@
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
-  
+
   basePkgs.enable = true;
   hyprland.enable = true;
   verilog.enable = true;
@@ -72,11 +72,9 @@
       amdvlk
     ];
   };
+
   programs = {
-    firefox.enable = true;
-    steam.enable = true;
     zsh.enable = true;
-    yazi.enable = true;
   };
 
   users.defaultUserShell = pkgs.zsh;
@@ -98,26 +96,9 @@
     variables.EDITOR = "nvim";
     variables.TERM = "xterm-kitty";
   };
-  environment.systemPackages =
-    (with pkgs; [
-      p7zip
-      tofi
-      kitty
-      playerctl
-      nano
-      brightnessctl
-      unzip
-      # qbittorrent-cli
-      # qbittorrent
-      clinfo
-      alejandra
-    ])
-    ++ (with nixpkgs-unstable; [
-      quickshell
-    ]);
-
-  fonts.packages = with pkgs; [
-    nerd-fonts.hack
+  environment.systemPackages = with pkgs; [
+    kitty
+    playerctl
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg:

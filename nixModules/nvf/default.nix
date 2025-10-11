@@ -1,11 +1,15 @@
-{inputs, ...}: {
+{inputs, pkgs, ...}: {
   imports = [
     inputs.nvf.nixosModules.default
     ./nvf-keybinds.nix
     ./nvf-styling.nix
   ];
+
+  environment.systemPackages = with pkgs; [ alejandra ];
+
   programs.nvf = {
     enable = true;
+
     settings = {
       vim = {
         options = {

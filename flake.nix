@@ -42,7 +42,7 @@
 
       specialArgs = {
         inherit inputs;
-        nixpkgs-unstable = import nixpkgs-unstable {
+        pkgs-unstable = import nixpkgs-unstable {
           system = "x86_64-linux";
         };
       };
@@ -73,7 +73,7 @@
 
       specialArgs = {
         inherit inputs;
-        nixpkgs-unstable = import nixpkgs-unstable {
+        pkgs-unstable = import nixpkgs-unstable {
           system = "x86_64-linux";
         };
       };

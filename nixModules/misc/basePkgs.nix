@@ -18,6 +18,7 @@ in {
       git
       killall
       curl
+      nano
     ];
   };
 }

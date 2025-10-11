@@ -5,7 +5,7 @@
   inputs,
   lib,
   pkgs,
-  nixpkgs-unstable,
+  pkgs-unstable,
   ...
 }: {
   imports = [
@@ -109,7 +109,7 @@
       playerctl
       alejandra
     ])
-    ++ (with nixpkgs-unstable; [
+    ++ (with pkgs-unstable; [
       quickshell
     ]);
 
