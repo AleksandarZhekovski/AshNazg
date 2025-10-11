@@ -13,23 +13,16 @@
     ./hardware-configuration.nix
     ./greeter.nix
 
-    ../../nixModules/nvf
-    ../../nixModules/ssh
-    ../../nixModules/zerotier
-    ../../nixModules/misc
-    ../../nixModules/verilog
-    ../../nixModules/hyprland
+    ../../nixModules
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   basePkgs.enable = true;
-
   hyprland.enable = true;
-
   verilog.enable = true;
+  zerotier.enable = true;
 
-  home-manager.backupFileExtension = "backup";
   # Use the systemd-boot EFI boot loader.
   boot = {
     loader.systemd-boot.enable = true;
@@ -79,55 +72,14 @@
     powerOnBoot = true;
   };
 
-  programs = {
-    firefox.enable = true;
-    zsh.enable = true;
-    yazi.enable = true;
-  };
-
-  users.defaultUserShell = pkgs.zsh;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.alex = {
-    isNormalUser = true;
-    extraGroups = ["wheel" "networkmanager"]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [
-      youtube-music
-      obsidian
-      vesktop
-    ];
-  };
-
-  environment.variables.EDITOR = "nvim";
   environment.systemPackages =
     (with pkgs; [
       brightnessctl
-      unzip
-      tofi
       kitty
-      p7zip
-      playerctl
-      alejandra
     ])
     ++ (with pkgs-unstable; [
-      quickshell
     ]);
 
-  fonts.packages = with pkgs; [
-    nerd-fonts.hack
-  ];
-
-  nixpkgs.config = {
-    allowUnfreePredicate = pkg:
-      builtins.elem (lib.getName pkg) [
-        "obsidian"
-        "steam"
-        "steam-original"
-        "steam-unwrapped"
-        "steam-run"
-        "zerotierone"
-      ];
-  };
   # List packages installed in system profile. To search, run:
   # $ nix search wget
 
