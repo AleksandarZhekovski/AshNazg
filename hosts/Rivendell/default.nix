@@ -34,7 +34,7 @@
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
     kernelPackages = pkgs.linuxPackages_latest;
-    initrd.kernelModules = ["amdgpu"];
+    initrd.kernelModules = ["amdgpu" "btusb"];
     kernelParams = ["mitigations=off"];
   };
 
@@ -67,6 +67,8 @@
       };
     };
   };
+
+  hardware.enableRedistributableFirmware = true;
 
   hardware.graphics = {
     enable = true;

@@ -7,12 +7,12 @@
   imports = [
     ./hardware-configuration.nix
 
-    ../../nixModules/nvf
-    ../../nixModules/ssh
-    ../../nixModules/zerotier
+    ../../nixModules
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
+
+  zerotire.enable = true;
 
   boot = {
     loader.grub = {
@@ -30,46 +30,10 @@
 
   time.timeZone = "Europe/Sofia";
 
-  users = {
-    defaultUserShell = pkgs.zsh;
-
-    users.alex = {
-      isNormalUser = true;
-      extraGroups = ["wheel"];
-      packages = with pkgs; [
-      ];
-    };
-
-    users.dimitar = {
-      isNormalUser = true;
-      extraGroups = ["wheel"];
-    };
-  };
-
   environment.systemPackages = with pkgs; [
-    wget
-    curl
-    git
-
-    kdePackages.ksystemlog
-    kdePackages.sddm-kcm
-
-    hardinfo2
     vlc
-    wayland-utils
-    wl-clipboard
-
     kitty
-    nano
     brightnessctl
-    btop
-    wol
-    unzip
-    qbittorrent
-  ];
-
-  environment.plasma6.excludePackages = with pkgs.kdePackages; [
-    konsole
   ];
 
   environment.sessionVariables = {
@@ -88,22 +52,14 @@
       pulse.enable = true;
     };
 
-    displayManager = {
-      sddm.enable = true;
-      sddm.wayland.enable = true;
-    };
-
-    desktopManager = {
-      plasma6.enable = true;
+    xserver = {
+      enable = true;
+      desktopManager = {
+        xterm.enable = false;
+        xfce.enable = true;
+      };
     };
   };
-
-  nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) [
-      "nvidia-settings"
-      "nvidia-persistenced"
-      "zerotierone"
-    ];
 
   hardware = {
     graphics.enable = true;
