@@ -12,7 +12,7 @@
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
-  zerotire.enable = true;
+  zerotier.enable = true;
 
   boot = {
     loader.grub = {

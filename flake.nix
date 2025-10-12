@@ -102,6 +102,25 @@
 
       modules = [
         ./hosts/Acerer
+        home-manager.nixosModules.home-manager
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+
+            users.alex = {
+              imports = [
+                ./hosts/Acerer/alex_home.nix
+              ];
+            };
+
+            users.dimitar = {
+              imports = [
+                ./hosts/Acerer/dimitar_home.nix
+              ];
+            };
+          };
+        }
       ];
     };
   };
