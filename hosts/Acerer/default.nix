@@ -31,6 +31,7 @@
       device = "/dev/sda";
     };
 
+    kernelPackages = pkgs.linuxPackages_latest;
     kernelParams = ["mitigations=off"];
   };
 
