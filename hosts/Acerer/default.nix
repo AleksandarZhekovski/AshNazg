@@ -7,12 +7,23 @@
   imports = [
     ./hardware-configuration.nix
 
-    ../../nixModules
+    ../../nixModules/users
+    ../../nixModules/nvf
+    ../../nixModules/zerotier
+    ../../nixModules/ssh
+    ../../nixModules/misc/allowedUnfreePkgs.nix
+    ../../nixModules/misc/basePkgs.nix
+    
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
+  # homeCantDoThis.nix
   zerotier.enable = true;
+  users.defaultUserShell = pkgs.zsh;
+  programs.zsh.enable = true;
+
+  home-manager.backupFileExtension = "backup";
 
   boot = {
     loader.grub = {
@@ -34,6 +45,7 @@
     vlc
     kitty
     brightnessctl
+    qbittorrent
   ];
 
   environment.sessionVariables = {
@@ -42,7 +54,6 @@
 
   programs = {
     firefox.enable = true;
-    zsh.enable = true;
     yazi.enable = true;
   };
 
