@@ -15,9 +15,6 @@
     ../../nixModules
   ];
 
-  
-
-  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   basePkgs.enable = true;
   hyprland.enable = true;
@@ -85,17 +82,8 @@
   environment.systemPackages = with pkgs; [
     kitty
     youtube-music
+    obsidian
   ];
-
-  nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) [
-      "obsidian"
-      "steam"
-      "steam-original"
-      "steam-unwrapped"
-      "steam-run"
-      "zerotierone"
-    ];
 
   system.stateVersion = "24.11"; # tl;dr don't change this
 }

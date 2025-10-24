@@ -34,13 +34,15 @@
         filetree.neo-tree.enable = true;
         fzf-lua.enable = true;
 
-        lsp.enable = true;
         languages = {
           enableTreesitter = true;
 
           nix.enable = true;
           nix.format.enable = true;
+
+          markdown.enable = true;
         };
+
 
         statusline.lualine.enable = true;
         telescope.enable = true;
