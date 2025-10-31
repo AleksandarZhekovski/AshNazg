@@ -78,6 +78,7 @@
       kitty
     ])
     ++ (with pkgs-unstable; [
+      youtube-music
     ]);
 
   # List packages installed in system profile. To search, run:
