@@ -79,11 +79,15 @@
     sessionVariables.NIXOS_OZONE_WL = "1";
     variables.TERM = "xterm-kitty";
   };
-  environment.systemPackages = with pkgs; [
-    kitty
-    youtube-music
-    obsidian
-  ];
+  environment.systemPackages = 
+    (with pkgs; [
+      kitty
+      obsidian
+    ]) 
+    ++ ( with pkgs-unstable; [
+      vesktop
+      youtube-music
+    ]);
 
   system.stateVersion = "24.11"; # tl;dr don't change this
 }
