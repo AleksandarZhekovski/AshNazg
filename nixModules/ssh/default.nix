@@ -25,6 +25,10 @@
       Hostname 10.244.0.100
       Port 2024
       User alex
+    Host lr
+      Hostname 192.168.1.100
+      Port 2024
+      User alex
 
     Host zAcerer
       Hostname 10.244.0.250
