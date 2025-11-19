@@ -11,6 +11,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./greeter.nix
+    ./stuff.nix
 
     ../../nixModules
   ];
@@ -45,6 +46,8 @@
   services = {
     pipewire = {
       enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
       pulse.enable = true;
       extraConfig = {
       };
