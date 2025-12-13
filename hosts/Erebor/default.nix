@@ -80,6 +80,7 @@
     ])
     ++ (with pkgs-unstable; [
       youtube-music
+      vesktop
     ]);
 
   # List packages installed in system profile. To search, run:
