@@ -74,7 +74,6 @@
     enable = true;
     extraPackages = with pkgs; [
       rocmPackages.clr.icd
-      amdvlk
     ];
   };
 

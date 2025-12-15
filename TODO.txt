@@ -1,7 +1,7 @@
 Auto mount usbs
   encrypt would be cool
 
-Persistant sorage usb nixos
+Persistent storage usb nixos
   Name
 
 Popups on volume/brightness control
@@ -11,9 +11,10 @@ hjem
   zsh and actual config, this is a nightmare
 
 
+
 copyparty
 
-isolate games/apps
+Isolate games/apps
   wine bottles type shit
   Steam too, god steam is fucking everywhere in the homedir
 
@@ -21,10 +22,10 @@ Homedir on tmpfs
   That is a little crazier
   Will need to reformat drive to make persistent sorage
 
-nvf tweeking
+nvf tweaking
 
 MODLUES/BUNDLES !!!!!
-  Can't keep tweeking things for both machines
+  Can't keep tweaking things for both machines
 
 
 

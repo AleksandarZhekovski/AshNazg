@@ -1,7 +1,11 @@
 {pkgs, ...}: {
   programs.git = {
     enable = true;
-    userName = "AleksandarZhekovski";
-    userEmail = "aleksandarzhekovski@protonmail.com";
+    settings = {
+      user = {
+        name = "AleksandarZhekovski";
+        email = "aleksandarzhekovski@protonmail.com";
+      };
+    };
   };
 }
