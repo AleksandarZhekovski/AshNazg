@@ -1,8 +1,14 @@
-{inputs, pkgs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}:
+{
   imports = [
     inputs.nvf.nixosModules.default
-    ./nvf-keybinds.nix
-    ./nvf-styling.nix
+    ./keybinds.nix
+    ./styling.nix
+    ./languages.nix
   ];
 
   environment.systemPackages = with pkgs; [ alejandra ];
@@ -16,6 +22,10 @@
         options = {
           tabstop = 4;
           shiftwidth = 2;
+        };
+
+        ui.illuminate = {
+          enable = true;
         };
 
         git = {
@@ -34,19 +44,10 @@
         filetree.neo-tree.enable = true;
         fzf-lua.enable = true;
 
-        languages = {
-          enableTreesitter = true;
-
-          nix.enable = true;
-          nix.format.enable = true;
-
-          markdown.enable = true;
-        };
-
-
         statusline.lualine.enable = true;
         telescope.enable = true;
         autocomplete.nvim-cmp.enable = true;
+
       };
     };
   };
