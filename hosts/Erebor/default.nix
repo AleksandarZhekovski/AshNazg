@@ -1,6 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system. Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 {
   inputs,
   lib,
@@ -9,7 +6,6 @@
   ...
 }: {
   imports = [
-    # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./greeter.nix
     ./stuff.nix
@@ -21,7 +17,6 @@
 
   basePkgs.enable = true;
   hyprland.enable = true;
-  verilog.enable = true;
   zerotier.enable = true;
 
   # Use the systemd-boot EFI boot loader.
@@ -43,8 +38,10 @@
   time.timeZone = "Europe/Sofia";
 
   services = {
+    # what does this do???
     fwupd.enable = true;
 
+    # huh?
     blueman.enable = true;
     pipewire = {
       enable = true;
@@ -53,6 +50,7 @@
 
     upower.enable = true;
 
+    # this doesn't work
     thinkfan = {
       enable = true;
       levels = [
@@ -68,6 +66,7 @@
     };
   };
 
+  # huh 2.0
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
@@ -76,7 +75,6 @@
   environment.systemPackages =
     (with pkgs; [
       brightnessctl
-      kitty
     ])
     ++ (with pkgs-unstable; [
       youtube-music

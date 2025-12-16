@@ -1,16 +1,15 @@
 Auto mount usbs
   encrypt would be cool
 
-Persistent storage usb nixos
-  Name
-
 Popups on volume/brightness control
-
 
 hjem
   zsh and actual config, this is a nightmare
 
+nvf tweaking
+  harper config
 
+  
 
 copyparty
 
@@ -18,20 +17,12 @@ Isolate games/apps
   wine bottles type shit
   Steam too, god steam is fucking everywhere in the homedir
 
+Persistent storage usb nixos
+  Name
+
 Homedir on tmpfs
   That is a little crazier
   Will need to reformat drive to make persistent sorage
-
-nvf tweaking
-
-MODLUES/BUNDLES !!!!!
-  Can't keep tweaking things for both machines
-
-
-
-fix tofi
-
-
 
 
 GOOD JOB ME:
@@ -40,5 +31,8 @@ GOOD JOB ME:
   Greeter
     Autostarter, the nix way????
     
+fix tofi
 
 
+MODLUES/BUNDLES !!!!!
+  Can't keep tweaking things for both machines

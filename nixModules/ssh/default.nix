@@ -3,6 +3,7 @@
     enable = true;
     ports = [2024];
     settings = {
+      # This is probably a problem
       PasswordAuthentication = true;
     };
   };

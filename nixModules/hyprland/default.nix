@@ -39,6 +39,7 @@ in
       (mkIf cfg.desktopStuff {
         environment.systemPackages =
           (with pkgs; [
+            kitty
             playerctl
             tofi
           ])
