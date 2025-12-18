@@ -13,7 +13,7 @@ Scope {
     property bool shouldShowOsd: true
 
     LazyLoader {
-        active: ((UPower.displayDevice.percentage * 100) > 15) ? false : true
+        active: ((UPower.displayDevice.percentage * 100) < 15) && (UPower.onBattery) ? true : false
         // active: UPower.onBattery
 
         PanelWindow {
@@ -34,6 +34,13 @@ Scope {
             Text {
                 anchors.centerIn: parent
                 text: "Hello %1".arg(UPower.displayDevice.percentage * 100)
+                color: "#a9b1d6"
+                font.pixelSize: 14
+            }
+
+            Text { 
+                anchors.left: parent.left
+                text: "is battery %1".arg(UPower.onBattery )
                 color: "#a9b1d6"
                 font.pixelSize: 14
             }
