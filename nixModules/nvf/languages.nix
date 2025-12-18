@@ -44,6 +44,26 @@
         treesitter.enable = true;
       };
 
+      qml = {
+        enable = true;
+        format.enable = true;
+        lsp.enable = true;
+        treesitter.enable = true;
+      };
+
+      html = {
+        enable = true;
+        format.enable = true;
+        lsp.enable = true;
+        # treesitter.enable = true;
+      };
+
+      css = {
+        enable = true;
+        format.enable = true;
+        lsp.enable = true;
+        # treesitter.enable = true;
+      };
     };
 
   };

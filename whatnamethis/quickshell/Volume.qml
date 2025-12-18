@@ -25,7 +25,7 @@ Scope {
 
 	Timer {
 		id: hideTimer
-		interval: 1000
+		interval: 1400
 		onTriggered: root.shouldShowOsd = false
 	}
 
@@ -39,12 +39,12 @@ Scope {
 			// Since the panel's screen is unset, it will be picked by the compositor
 			// when the window is created. Most compositors pick the current active monitor.
 
-			anchors.bottom: true
-			margins.bottom: screen.height / 5
+			anchors.top: true
+			margins.top: screen.height / 7
 			exclusiveZone: 0
 
-			implicitWidth: 400
-			implicitHeight: 50
+			implicitWidth: 800
+			implicitHeight: 60
 			color: "transparent"
 
 			// An empty click mask prevents the window from blocking mouse events.
@@ -52,13 +52,13 @@ Scope {
 
 			Rectangle {
 				anchors.fill: parent
-				radius: height / 2
+				radius: height /2 
 				color: "#80000000"
 
 				RowLayout {
 					anchors {
 						fill: parent
-						leftMargin: 10
+						leftMargin: 15
 						rightMargin: 15
 					}
 
@@ -71,8 +71,8 @@ Scope {
 						// Stretches to fill all left-over space
 						Layout.fillWidth: true
 
-						implicitHeight: 10
-						radius: 20
+						implicitHeight: 15
+						radius: 10
 						color: "#50ffffff"
 
 						Rectangle {
