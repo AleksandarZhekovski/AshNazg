@@ -15,6 +15,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-minecraft = {
+      url = "github:Infinidoge/nix-minecraft"; 
+    };
+
     nvf = {
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";

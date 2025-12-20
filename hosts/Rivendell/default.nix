@@ -21,10 +21,13 @@
   hyprland.enable = true;
   verilog.enable = true;
   zerotier.enable = true;
+  # mc-server.enable = true;
+
 
   gaming = {
     enable = true;
     lutris = true;
+    # minecraft = true;
   };
 
   # Use the systemd-boot EFI boot loader.

@@ -8,6 +8,7 @@
         "steam-unwrapped"
         "steam-run"
         "zerotierone"
+        "minecraft-server"
       ];
   };
 }
