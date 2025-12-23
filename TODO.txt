@@ -1,38 +1,56 @@
-Auto mount usbs
-  encrypt would be cool
+Legend
+  -c complete   - Needs no further changes and requires attention only on breaking changes.
+  -m maintained - Needs further changes or is volatile
+  -p planed     - Pretty sure I want these implemented
+  -r research   - Things that need research before committing to implementation
+  -i interest   - Might be interesting, might not
+  -d deprecated - No longer needed/desired
 
-Popups on volume/brightness control
-
-hjem
-  zsh and actual config, this is a nightmare
+Flake changes
+  -r migrate to hjem
+  -r zsh and actual config, this is a nightmare
+  -i homedir on tmpfs
+  -r abolish references to /home/alex/AshNazg
+    tofi
+    hyprland
+    qt
+    greeter
+  -p auto garbage collection
+  -r greeter
 
 nvf tweaking
-  harper config
+  -m harper config
+  -p clock on status
 
-  
+The looks and the feels
+  -m border
+  -m animations
+  -p special workspaces
+  -r migrate to hjem???
+  -p screenshot folder
+  -m popups on volume/brightness control
+  -p auto mount usbs (encrypt would be cool)
+  -r different colors for the different host
+  -d catputchin
+  -d waybar
+  -m low battery indicator
 
-copyparty
+File sharing and storage
+  -p Abolish useless folders
+  -p ssh-fs
+  -r copyparty
 
 Isolate games/apps
-  wine bottles type shit
-  Steam too, god steam is fucking everywhere in the homedir
+  -r wine bottles type shit
+  -r Steam too, god steam is fucking everywhere in the homedir
 
-Persistent storage usb nixos
-  Name
+Hosts
+  -m Rivendell
+  -m Erebor
+  -d Acerer
+  -p Persistent storage usb nixos
+  -p Headless server
 
-Homedir on tmpfs
-  That is a little crazier
-  Will need to reformat drive to make persistent sorage
-
-
-GOOD JOB ME:
-  monitor sound on Rivendell
-  get rid of catppuccin
-  Greeter
-    Autostarter, the nix way????
-    
-fix tofi
-
-
-MODLUES/BUNDLES !!!!!
-  Can't keep tweaking things for both machines
+Audio heven
+  -i fiddle with pipewiere audio severs
+  -i seamless transition between devices
