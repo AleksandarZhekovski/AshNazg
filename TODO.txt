@@ -18,6 +18,9 @@ Flake changes
   -p auto garbage collection
   -r greeter
 
+System admin
+  firewall
+
 nvf tweaking
   -m harper config
   -p clock on status
