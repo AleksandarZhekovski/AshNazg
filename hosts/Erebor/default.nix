@@ -4,7 +4,8 @@
   pkgs,
   pkgs-unstable,
   ...
-}: {
+}:
+{
   imports = [
     ./hardware-configuration.nix
     ./greeter.nix
@@ -13,11 +14,18 @@
     ../../nixModules
   ];
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   basePkgs.enable = true;
   hyprland.enable = true;
   zerotier.enable = true;
+  gaming = {
+    enable = true;
+    lutris = true;
+  };
 
   # Use the systemd-boot EFI boot loader.
   boot = {
@@ -54,14 +62,46 @@
     thinkfan = {
       enable = true;
       levels = [
-        [0 0 55]
-        [1 53 60]
-        [2 58 65]
-        [3 63 70]
-        [4 68 75]
-        [5 73 80]
-        [7 78 85]
-        [127 85 32767]
+        [
+          0
+          0
+          55
+        ]
+        [
+          1
+          53
+          60
+        ]
+        [
+          2
+          58
+          65
+        ]
+        [
+          3
+          63
+          70
+        ]
+        [
+          4
+          68
+          75
+        ]
+        [
+          5
+          73
+          80
+        ]
+        [
+          7
+          78
+          85
+        ]
+        [
+          127
+          85
+          32767
+        ]
       ];
     };
   };
