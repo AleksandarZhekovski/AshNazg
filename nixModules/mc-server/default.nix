@@ -28,7 +28,7 @@ with lib;
       servers = {
         TheShire = {
           enable = true;
-          package = pkgs.minecraftServers.vanilla-1_21_11;
+          package = pkgs.fabricServers.fabric-1_21_11;
 
           autoStart = true;
 
@@ -41,7 +41,7 @@ with lib;
             online-mode=false;
             enforce-secure-profile=false;
             view-distance=16;
-            simulation-distance=12;
+            simulation-distance=14;
           };
         };
       };
