@@ -21,13 +21,13 @@
   hyprland.enable = true;
   verilog.enable = true;
   zerotier.enable = true;
-  # mc-server.enable = true;
+  mc-server.enable = true;
 
 
   gaming = {
     enable = true;
     lutris = true;
-    # minecraft = true;
+    minecraft = true;
   };
 
   # Use the systemd-boot EFI boot loader.
@@ -87,7 +87,6 @@
   environment.systemPackages = 
     (with pkgs; [
       kitty
-      obsidian
     ]) 
     ++ ( with pkgs-unstable; [
       vesktop

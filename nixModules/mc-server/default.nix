@@ -23,19 +23,25 @@ with lib;
       eula = true;
       openFirewall = true;
 
+      dataDir = "/srv/real";
+
       servers = {
         TheShire = {
           enable = true;
-          package = pkgs.fabricServers.fabric-1_21_11;
+          package = pkgs.minecraftServers.vanilla-1_21_11;
 
-          autoStart = false;
+          autoStart = true;
 
           serverProperties = {
             server-port = 25565;
             max-players = 10;
             motd = "The Shire minecraft server";
-            jvmOpts = "-XmxG -Xms2G";
-
+            jvmOpts = "-XmxG -Xms5G";
+            difficulty = 3;
+            online-mode=false;
+            enforce-secure-profile=false;
+            view-distance=16;
+            simulation-distance=12;
           };
         };
       };
