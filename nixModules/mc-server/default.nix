@@ -18,6 +18,10 @@ with lib;
   config = mkIf cfg.enable {
     nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
 
+    environment.systemPackages = with pkgs; [
+      tmux
+    ];
+
     services.minecraft-servers = {
       enable = true;
       eula = true;
@@ -36,12 +40,12 @@ with lib;
             server-port = 25565;
             max-players = 10;
             motd = "The Shire minecraft server";
-            jvmOpts = "-XmxG -Xms5G";
+            jvmOpts = "-Xmx2G -Xms8G";
             difficulty = 3;
-            online-mode=false;
-            enforce-secure-profile=false;
-            view-distance=16;
-            simulation-distance=14;
+            online-mode = false;
+            enforce-secure-profile = false;
+            view-distance = 16;
+            simulation-distance = 14;
           };
         };
       };
