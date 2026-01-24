@@ -33,14 +33,13 @@ with lib;
         TheShire = {
           enable = true;
           package = pkgs.fabricServers.fabric-1_21_11;
-
+          jvmOpts = "-Xms1G -Xmx6G";
           autoStart = true;
 
           serverProperties = {
             server-port = 25565;
             max-players = 10;
             motd = "The Shire minecraft server";
-            jvmOpts = "-Xmx2G -Xms8G";
             difficulty = 3;
             online-mode = false;
             enforce-secure-profile = false;
