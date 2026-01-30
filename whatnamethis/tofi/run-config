@@ -70,7 +70,7 @@
 	# Prompt text theme
 	# prompt-color = #FFFFFF
 	prompt-background = #00000000
-	prompt-background-padding = 0
+	prompt-background-padding = 
 	prompt-background-corner-radius = 0
 
 	# Placeholder text theme
@@ -82,7 +82,7 @@
 	# Input text theme
 	# input-color = #FFFFFF
 	input-background = #00000000
-	input-background-padding = 0
+	input-background-padding = 0 # top, right, bottom, left
 	input-background-corner-radius = 0
 
 	# Default result text theme
@@ -142,7 +142,7 @@
 ### Text layout
 #
 	# Prompt to display.
-	prompt-text = "cmd: "
+	prompt-text = ""
 
 	# Extra horizontal padding between prompt and input.
 	prompt-padding = 0
@@ -189,9 +189,9 @@
 	corner-radius = 0
 
 	# Padding between borders and text. Can be pixels or a percentage.
-	padding-top = 35%
+	padding-top = 33%
 	padding-bottom = 8
-	padding-left = 35%
+	padding-left = 47%
 	padding-right = 8
 
 	# Whether to clip text drawing to be within the specified padding. This
@@ -236,7 +236,7 @@
 ### Behaviour
 #
 	# Hide the mouse cursor.
-	hide-cursor = false
+	hide-cursor = true
 
 	# Show a text cursor in the input field.
 	text-cursor = false
