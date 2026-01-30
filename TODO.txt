@@ -1,3 +1,67 @@
+Flake changes
+  -p auto garbage collection
+
+  -r migrate to hjem
+    - drop homemanager
+  -r greeter 
+  -r zsh and actual config, this is a nightmare
+  -r abolish references to /home/alex/AshNazg
+    tofi
+    hyprland
+    qt
+    greeter
+
+  -i homedir on tmpfs
+
+System admin
+  -r firewall
+
+nvf tweaking
+  -m harper config
+
+  -p clock on status
+
+The looks and the feels
+  -m border
+  -m animations
+  -m low battery indicator
+  -m popups on volume/brightness control (qml)
+
+  -p special workspaces
+  -p screenshot folder
+  -p auto mount usbs (encrypt would be cool)
+
+  -r migrate to hjem???
+  -r different colors for the different host
+
+  -d catputchin
+  -d waybar
+
+File sharing and storage
+  -p Abolish useless folders
+  -p ssh-fs
+
+  -r copyparty
+
+Games/apps
+  -m Minecraft server
+
+  -r wine bottles type shit
+  -r Steam too, god steam is fucking everywhere in the homedir
+
+Hosts
+  -m Rivendell
+  -m Erebor
+
+  -p Persistent storage usb nixos
+  -p Headless server
+
+  -d Acerer
+
+Audio heven
+  -i fiddle with pipewiere audio severs
+  -i seamless transition between devices
+
 Legend
   -c complete   - Needs no further changes and requires attention only on breaking changes.
   -m maintained - Needs further changes or is volatile
@@ -6,54 +70,3 @@ Legend
   -i interest   - Might be interesting, might not
   -d deprecated - No longer needed/desired
 
-Flake changes
-  -r migrate to hjem
-  -r zsh and actual config, this is a nightmare
-  -i homedir on tmpfs
-  -r abolish references to /home/alex/AshNazg
-    tofi
-    hyprland
-    qt
-    greeter
-  -p auto garbage collection
-  -r greeter
-
-System admin
-  firewall
-
-nvf tweaking
-  -m harper config
-  -p clock on status
-
-The looks and the feels
-  -m border
-  -m animations
-  -p special workspaces
-  -r migrate to hjem???
-  -p screenshot folder
-  -m popups on volume/brightness control
-  -p auto mount usbs (encrypt would be cool)
-  -r different colors for the different host
-  -d catputchin
-  -d waybar
-  -m low battery indicator
-
-File sharing and storage
-  -p Abolish useless folders
-  -p ssh-fs
-  -r copyparty
-
-Isolate games/apps
-  -r wine bottles type shit
-  -r Steam too, god steam is fucking everywhere in the homedir
-
-Hosts
-  -m Rivendell
-  -m Erebor
-  -d Acerer
-  -p Persistent storage usb nixos
-  -p Headless server
-
-Audio heven
-  -i fiddle with pipewiere audio severs
-  -i seamless transition between devices
