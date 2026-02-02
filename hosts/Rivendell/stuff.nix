@@ -11,7 +11,22 @@
     ]);
 
   networking.firewall = {
-      allowedUDPPorts = [ 34197 2024];
-      allowedTCPPorts = [ 80 443 2024 ];
-    };
+    allowedUDPPorts = [
+      34197
+      2024
+
+      # pipewire-roc
+      4713
+      4714
+    ];
+    allowedTCPPorts = [
+      80
+      443
+      2024
+
+      # pipewire-roc
+      4713
+      4714
+    ];
+  };
 }

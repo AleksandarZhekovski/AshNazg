@@ -16,7 +16,7 @@
     };
 
     nix-minecraft = {
-      url = "github:Infinidoge/nix-minecraft"; 
+      url = "github:Infinidoge/nix-minecraft";
     };
 
     nvf = {
@@ -29,103 +29,105 @@
     };
   };
 
-  outputs = inputs @ {
-    self,
-    nixpkgs,
-    nixpkgs-unstable,
-    nvf,
-    home-manager,
-    nixos-hardware,
-    ...
-  }: {
-    # Something to do with nvf
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      nixpkgs-unstable,
+      nvf,
+      home-manager,
+      nixos-hardware,
+      ...
+    }:
+    {
+      # Something to do with nvf
 
-    # Erebor: Thinkpad laptop used for studying and coding
-    nixosConfigurations.Erebor = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
+      # Erebor: Thinkpad laptop used for studying and coding
+      nixosConfigurations.Erebor = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
 
-      specialArgs = {
-        inherit inputs;
-        pkgs-unstable = import nixpkgs-unstable {
-          system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs;
+          pkgs-unstable = import nixpkgs-unstable {
+            system = "x86_64-linux";
+          };
         };
+
+        modules = [
+          nixos-hardware.nixosModules.lenovo-thinkpad-l13
+
+          ./hosts/Erebor
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.alex = {
+                imports = [
+                  ./hosts/Erebor/home.nix
+                ];
+              };
+            };
+          }
+        ];
       };
 
-      modules = [
-        nixos-hardware.nixosModules.lenovo-thinkpad-l13
+      # Rivendell, big home computer used for gaming, coding, studying and much more
+      nixosConfigurations.Rivendell = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
 
-        ./hosts/Erebor
-
-        home-manager.nixosModules.home-manager
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            users.alex = {
-              imports = [
-                ./hosts/Erebor/home.nix
-              ];
-            };
+        specialArgs = {
+          inherit inputs;
+          pkgs-unstable = import nixpkgs-unstable {
+            system = "x86_64-linux";
           };
-        }
-      ];
-    };
-
-    # Rivendell, big home computer used for gaming, coding, studying and much more
-    nixosConfigurations.Rivendell = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-
-      specialArgs = {
-        inherit inputs;
-        pkgs-unstable = import nixpkgs-unstable {
-          system = "x86_64-linux";
         };
+        modules = [
+          ./hosts/Rivendell
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.alex = {
+                imports = [
+                  ./hosts/Rivendell/home.nix
+                ];
+              };
+            };
+          }
+        ];
       };
-      modules = [
-        ./hosts/Rivendell
 
-        home-manager.nixosModules.home-manager
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            users.alex = {
-              imports = [
-                ./hosts/Rivendell/home.nix
-              ];
-            };
-          };
-        }
-      ];
+      # nixosConfigurations.Acerer = nixpkgs.lib.nixosSystem {
+      #   system = "x86_64-linux";
+      #
+      #   specialArgs = {inherit inputs;};
+      #
+      #   modules = [
+      #     ./hosts/Acerer
+      #     home-manager.nixosModules.home-manager
+      #     {
+      #       home-manager = {
+      #         useGlobalPkgs = true;
+      #         useUserPackages = true;
+      #
+      #         users.alex = {
+      #           imports = [
+      #             ./hosts/Acerer/alex_home.nix
+      #           ];
+      #         };
+      #
+      #         users.dimitar = {
+      #           imports = [
+      #             ./hosts/Acerer/dimitar_home.nix
+      #           ];
+      #         };
+      #       };
+      #     }
+      #   ];
+      # };
     };
-
-    nixosConfigurations.Acerer = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-
-      specialArgs = {inherit inputs;};
-
-      modules = [
-        ./hosts/Acerer
-        home-manager.nixosModules.home-manager
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-
-            users.alex = {
-              imports = [
-                ./hosts/Acerer/alex_home.nix
-              ];
-            };
-
-            users.dimitar = {
-              imports = [
-                ./hosts/Acerer/dimitar_home.nix
-              ];
-            };
-          };
-        }
-      ];
-    };
-  };
 }

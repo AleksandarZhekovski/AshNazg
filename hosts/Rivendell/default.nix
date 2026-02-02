@@ -25,7 +25,22 @@
 
   audio = {
     enable = true;
-    roc-sink = true;
+    roc-source = {
+      enable = true;
+      source-port = 4723;
+      repair-port = 4724;
+      name = "Rivendell ROC receiver source";
+      node-name = "Rivendell ROC teceiver";
+    };
+
+    roc-sink = {
+      enable = true;
+      remote-ip = "192.168.1.200";
+      source-port = 4713;
+      repair-port = 4714;
+      name = "Rivendell ROC transmiter source";
+      node-name = "Rivendell ROC transmiter";
+    };
   };
 
   gaming = {
@@ -97,7 +112,7 @@
     ])
     ++ (with pkgs-unstable; [
       vesktop
-      youtube-music
+      pear-desktop
     ]);
 
   system.stateVersion = "24.11"; # tl;dr don't change this

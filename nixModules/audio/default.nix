@@ -12,15 +12,74 @@ with lib;
   options.audio = {
     enable = mkEnableOption "Pipewire, pipewire-pulse, wireplumber, audio servers and configs";
 
-    roc-source = mkOption {
-      type = types.bool;
-      default = false;
-      description = "ROC Source";
+    roc-source = {
+      enable = mkOption {
+        type = types.bool;
+        default = false;
+        description = "ROC Source, it stays on the client";
+      };
+
+      source-port = mkOption {
+        type = types.port;
+        default = 4713;
+        description = "For the ROC connection";
+      };
+
+      repair-port = mkOption {
+        type = types.port;
+        default = 4714;
+        description = "For the ROC repair, whatever that is";
+      };
+
+      name = mkOption {
+        type = types.str;
+        default = "remote soundcard";
+        description = "";
+      };
+
+      node-name = mkOption {
+        type = types.str;
+        default = "remote source";
+        description = "";
+      };
     };
-    roc-sink = mkOption {
-      type = types.bool;
-      default = false;
-      description = "ROC sink";
+
+    roc-sink = {
+      enable = mkOption {
+        type = types.bool;
+        default = false;
+        description = "ROC sink, acts a server";
+      };
+
+      remote-ip = mkOption {
+        type = types.str;
+        default = "192.168.1.100";
+        description = "ip to witch to stream to";
+      };
+
+      source-port = mkOption {
+        type = types.port;
+        default = 4713;
+        description = "For the ROC connection";
+      };
+
+      repair-port = mkOption {
+        type = types.port;
+        default = 4714;
+        description = "For the ROC repair, whatever that is";
+      };
+
+      name = mkOption {
+        type = types.str;
+        default = "ROC stream soundcard";
+        description = "";
+      };
+
+      node-name = mkOption {
+        type = types.str;
+        default = "ROC sink";
+        description = "";
+      };
     };
   };
 
@@ -38,27 +97,9 @@ with lib;
       # If you want to use JACK applications, uncomment this
       #jack.enable = true;
       # systemWide = true;
-
-      # configPackages = [
-      #   (pkgs.writeTextDir "share/pipewire/pipewire.conf.d/my-roc-sink.conf" ''
-      #     context.modules = [
-      #       {
-      #         name = libpipewire-module-roc-sink
-      #         args = {
-      #           "fec.code" = disable
-      #           "remote.ip" = 192.168.1.100 # Server IP
-      #           "remote.source.port" = 4713 # Source port on the server
-      #           "remote.repair.port" = 4714 # Repair port on the server
-      #           "sink.name" = "Roc sink sound output" # Sink name
-      #           "sink.props.node.name" = "roc-sink" # Node name for the sink
-      #         }
-      #       }
-      #     ]
-      #   '')
-      # ];
     }
 
-    (mkIf cfg.roc-source {
+    (mkIf cfg.roc-source.enable {
       services.pipewire.extraConfig.pipewire = {
         "10-roc-source" = {
           "context.modules" = [
@@ -68,10 +109,10 @@ with lib;
                 "fec.code" = "rs8m";
                 "local.ip" = "0.0.0.0";
                 "resampler.profile" = "medium";
-                "local.source.port" = "4713";
-                "local.repair.port" = "4714";
-                "source.name" = "remote soundcard";
-                "source.props.node.name" = "roc-source";
+                "local.source.port" =       "${toString cfg.roc-source.source-port}";
+                "local.repair.port" =       "${toString cfg.roc-source.repair-port}";
+                "source.name" =             "${toString cfg.roc-source.name}";
+                "source.props.node.name" =  "${toString cfg.roc-source.node-name}";
               };
             }
           ];
@@ -79,7 +120,7 @@ with lib;
       };
     })
 
-    (mkIf cfg.roc-sink {
+    (mkIf cfg.roc-sink.enable {
       services.pipewire.extraConfig.pipewire = {
         "10-roc-sink.conf" = {
           "context.modules" = [
@@ -87,11 +128,11 @@ with lib;
               name = "libpipewire-module-roc-sink";
               args = {
                 "fec.code" = "rs8m";
-                "remote.ip" = "192.168.1.100"; # Server IP
-                "remote.source.port" = "4713"; # Source port on the server
-                "remote.repair.port" = "4714"; # Repair port on the server
-                "sink.name" = "remote sound output"; # Sink name
-                "sink.props.node.name" = "roc-sink"; # Node name for the sink
+                "remote.ip" =               "${cfg.roc-sink.remote-ip}"; # Server IP
+                "remote.source.port" =      "${toString cfg.roc-sink.source-port}"; # Source port on the server
+                "remote.repair.port" =      "${toString cfg.roc-sink.repair-port}"; # Repair port on the server
+                "sink.name" =               "${cfg.roc-sink.name}"; # Sink name
+                "sink.props.node.name" =    "${cfg.roc-sink.node-name}"; # Node name for the sink
               };
             }
           ];

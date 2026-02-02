@@ -25,8 +25,24 @@
 
   audio = {
     enable = true;
-    roc-source = true;
+    roc-source = {
+      enable = true;
+      source-port = 4713;
+      repair-port = 4714;
+      name = "Erebor ROC receiver source";
+      node-name = "Erebor ROC teceiver";
+    };
+
+    roc-sink = {
+      enable = true;
+      remote-ip = "192.168.1.100";
+      source-port = 4723;
+      repair-port = 4724;
+      name = "Erebor ROC transmiter source";
+      node-name = "Erebor ROC transmiter";
+    };
   };
+
   gaming = {
     enable = true;
     lutris = true;
@@ -117,7 +133,7 @@
       brightnessctl
     ])
     ++ (with pkgs-unstable; [
-      youtube-music
+      pear-desktop
       vesktop
     ]);
 
