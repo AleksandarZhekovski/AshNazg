@@ -100,6 +100,24 @@ with lib;
     }
 
     (mkIf cfg.roc-source.enable {
+      networking.firewall = {
+        allowedUDPPorts = [
+          # pipewire-roc
+          cfg.roc-source.source-port
+          cfg.roc-source.repair-port
+
+          cfg.roc-sink.source-port
+          cfg.roc-sink.repair-port
+        ];
+        allowedTCPPorts = [
+          # pipewire-roc
+          cfg.roc-source.source-port
+          cfg.roc-source.repair-port
+
+          cfg.roc-sink.source-port
+          cfg.roc-sink.repair-port
+        ];
+      };
       services.pipewire.extraConfig.pipewire = {
         "10-roc-source" = {
           "context.modules" = [
@@ -109,10 +127,10 @@ with lib;
                 "fec.code" = "rs8m";
                 "local.ip" = "0.0.0.0";
                 "resampler.profile" = "medium";
-                "local.source.port" =       "${toString cfg.roc-source.source-port}";
-                "local.repair.port" =       "${toString cfg.roc-source.repair-port}";
-                "source.name" =             "${toString cfg.roc-source.name}";
-                "source.props.node.name" =  "${toString cfg.roc-source.node-name}";
+                "local.source.port" = "${toString cfg.roc-source.source-port}";
+                "local.repair.port" = "${toString cfg.roc-source.repair-port}";
+                "source.name" = "${toString cfg.roc-source.name}";
+                "source.props.node.name" = "${toString cfg.roc-source.node-name}";
               };
             }
           ];
@@ -128,11 +146,11 @@ with lib;
               name = "libpipewire-module-roc-sink";
               args = {
                 "fec.code" = "rs8m";
-                "remote.ip" =               "${cfg.roc-sink.remote-ip}"; # Server IP
-                "remote.source.port" =      "${toString cfg.roc-sink.source-port}"; # Source port on the server
-                "remote.repair.port" =      "${toString cfg.roc-sink.repair-port}"; # Repair port on the server
-                "sink.name" =               "${cfg.roc-sink.name}"; # Sink name
-                "sink.props.node.name" =    "${cfg.roc-sink.node-name}"; # Node name for the sink
+                "remote.ip" = "${cfg.roc-sink.remote-ip}"; # Server IP
+                "remote.source.port" = "${toString cfg.roc-sink.source-port}"; # Source port on the server
+                "remote.repair.port" = "${toString cfg.roc-sink.repair-port}"; # Repair port on the server
+                "sink.name" = "${cfg.roc-sink.name}"; # Sink name
+                "sink.props.node.name" = "${cfg.roc-sink.node-name}"; # Node name for the sink
               };
             }
           ];
