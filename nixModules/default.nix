@@ -9,5 +9,6 @@
     ./users
     ./verilog
     ./zerotier
+    ./audio
   ];
 }

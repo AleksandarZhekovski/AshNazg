@@ -6,7 +6,8 @@
   pkgs,
   pkgs-unstable,
   ...
-}: {
+}:
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -16,13 +17,16 @@
     ../../nixModules
   ];
 
-
   basePkgs.enable = true;
   hyprland.enable = true;
-  verilog.enable = true;
+  # verilog.enable = true;
   zerotier.enable = true;
   mc-server.enable = true;
 
+  audio = {
+    enable = true;
+    roc-sink = true;
+  };
 
   gaming = {
     enable = true;
@@ -35,8 +39,11 @@
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
     kernelPackages = pkgs.linuxPackages_latest;
-    initrd.kernelModules = ["amdgpu" "btusb"];
-    kernelParams = ["mitigations=off"];
+    initrd.kernelModules = [
+      "amdgpu"
+      "btusb"
+    ];
+    kernelParams = [ "mitigations=off" ];
   };
 
   networking = {
@@ -47,14 +54,14 @@
   time.timeZone = "Europe/Sofia";
 
   services = {
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-      extraConfig = {
-      };
-    };
+    #   pipewire = {
+    #     enable = true;
+    #     alsa.enable = true;
+    #     alsa.support32Bit = true;
+    #     pulse.enable = true;
+    #     extraConfig = {
+    #     };
+    #   };
   };
 
   hardware.bluetooth = {
@@ -84,11 +91,11 @@
     sessionVariables.NIXOS_OZONE_WL = "1";
     variables.TERM = "xterm-kitty";
   };
-  environment.systemPackages = 
+  environment.systemPackages =
     (with pkgs; [
       kitty
-    ]) 
-    ++ ( with pkgs-unstable; [
+    ])
+    ++ (with pkgs-unstable; [
       vesktop
       youtube-music
     ]);

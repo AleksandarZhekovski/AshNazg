@@ -22,6 +22,11 @@
   basePkgs.enable = true;
   hyprland.enable = true;
   zerotier.enable = true;
+
+  audio = {
+    enable = true;
+    roc-source = true;
+  };
   gaming = {
     enable = true;
     lutris = true;
@@ -51,11 +56,6 @@
 
     # huh?
     blueman.enable = true;
-    pipewire = {
-      enable = true;
-      pulse.enable = true;
-    };
-
     upower.enable = true;
 
     # this doesn't work
