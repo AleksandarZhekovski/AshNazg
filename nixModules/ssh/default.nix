@@ -3,8 +3,7 @@
     enable = true;
     ports = [2024];
     settings = {
-      # This is probably a problem
-      PasswordAuthentication = true;
+      PasswordAuthentication = false; # Keep this on!!!
     };
   };
 
@@ -15,6 +14,10 @@
       User alex
     Host ze
       Hostname 10.244.0.200
+      Port 2024
+      User alex
+    Host le
+      Hostname 192.168.1.100
       Port 2024
       User alex
 
@@ -44,5 +47,6 @@
   users.users.alex.openssh.authorizedKeys.keyFiles = [
     ./Erebor_pub_key
     ./Rivendell_pub_key
+    ./Bitwarden_pub_key
   ];
 }
