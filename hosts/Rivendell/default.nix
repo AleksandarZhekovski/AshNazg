@@ -23,6 +23,8 @@
   zerotier.enable = true;
   mc-server.enable = true;
 
+  git-server.enable = true;
+
   audio = {
     enable = true;
     roc-source = {
