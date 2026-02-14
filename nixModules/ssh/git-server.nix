@@ -33,6 +33,12 @@ with lib;
       # ];
     };
 
+  users.users.git.openssh.authorizedKeys.keyFiles = [
+    ./Erebor_pub_key
+    ./Rivendell_pub_key
+    ./Bitwarden_pub_key
+  ];
+
     users.groups.git = { };
 
     services.openssh = {
