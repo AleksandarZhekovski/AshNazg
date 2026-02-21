@@ -22,6 +22,9 @@ with lib;
       tmux
     ];
 
+    nixpkgs.config.allowUnfree = true;
+    users.users.alex.extraGroups = [ "minecraft" ];
+
     services.minecraft-servers = {
       enable = true;
       eula = true;
@@ -31,7 +34,7 @@ with lib;
 
       servers = {
         TheShire = {
-          enable = true;
+          enable = false;
           package = pkgs.fabricServers.fabric-1_21_11;
           jvmOpts = "-Xms1G -Xmx6G";
           autoStart = true;
@@ -47,6 +50,26 @@ with lib;
             simulation-distance = 14;
           };
         };
+
+        Tetratka = {
+          enable = true;
+          package = pkgs.neoforgeServers.neoforge-1_21_10;
+          jvmOpts = "-Xms1G -Xmx6G";
+          autoStart = true;
+
+          serverProperties = {
+            server-port = 25565;
+            max-players = 10;
+            motd = "working times: 10:00am - ~12:00pm";
+            difficulty = 2;
+            online-mode = false;
+            enforce-secure-profile = false;
+            view-distance = 12;
+            simulation-distance = 12;
+          };
+
+        };
+
       };
 
     };

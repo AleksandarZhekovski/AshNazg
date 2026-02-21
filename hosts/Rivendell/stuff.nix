@@ -14,11 +14,18 @@
     allowedUDPPorts = [
       34197
       2024
+      25565
     ];
     allowedTCPPorts = [
       80
       443
       2024
+      25565
     ];
+  };
+
+  virtualisation.waydroid = {
+  # enable = true;
+    package = pkgs-unstable.waydroid-nftables;
   };
 }
