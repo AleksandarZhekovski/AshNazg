@@ -1,6 +1,6 @@
 {
   pkgs,
-  pkgs-unstable,
+  pkgs-stable,
   lib,
   config,
   ...
@@ -42,9 +42,9 @@ in
             kitty
             playerctl
             tofi
-          ])
-          ++ (with pkgs-unstable; [
             quickshell
+          ])
+          ++ (with pkgs-stable; [
           ]);
 
         programs = {

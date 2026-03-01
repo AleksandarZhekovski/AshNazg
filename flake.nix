@@ -2,7 +2,7 @@
   description = "AshNazg: One config to rule them all";
 
   inputs = {
-    nixpkgs = {
+    nixpkgs-stable = {
       url = "github:NixOs/nixpkgs/nixos-25.11";
     };
 
@@ -11,8 +11,8 @@
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     nix-minecraft = {
@@ -21,7 +21,7 @@
 
     nvf = {
       url = "github:notashelf/nvf";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     nixos-hardware = {
@@ -32,7 +32,7 @@
   outputs =
     inputs@{
       self,
-      nixpkgs,
+      nixpkgs-stable,
       nixpkgs-unstable,
       nvf,
       home-manager,
@@ -40,10 +40,36 @@
       ...
     }:
     {
-      # Something to do with nvf
+      # Rivendell, big home computer used for gaming, coding, studying, and much more
+      nixosConfigurations.Rivendell = nixpkgs-unstable.lib.nixosSystem {
+        system = "x86_64-linux";
+
+        specialArgs = {
+          inherit inputs;
+          pkgs-stable = import nixpkgs-stable {
+            system = "x86_64-linux";
+          };
+        };
+        modules = [
+          ./hosts/Rivendell
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.alex = {
+                imports = [
+                  ./hosts/Rivendell/home.nix
+                ];
+              };
+            };
+          }
+        ];
+      };
 
       # Erebor: Thinkpad laptop used for studying and coding
-      nixosConfigurations.Erebor = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.Erebor = nixpkgs-unstable.lib.nixosSystem {
         system = "x86_64-linux";
 
         specialArgs = {
@@ -66,34 +92,6 @@
               users.alex = {
                 imports = [
                   ./hosts/Erebor/home.nix
-                ];
-              };
-            };
-          }
-        ];
-      };
-
-      # Rivendell, big home computer used for gaming, coding, studying and much more
-      nixosConfigurations.Rivendell = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-
-        specialArgs = {
-          inherit inputs;
-          pkgs-unstable = import nixpkgs-unstable {
-            system = "x86_64-linux";
-          };
-        };
-        modules = [
-          ./hosts/Rivendell
-
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.alex = {
-                imports = [
-                  ./hosts/Rivendell/home.nix
                 ];
               };
             };

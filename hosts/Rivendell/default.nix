@@ -4,7 +4,7 @@
 {
   lib,
   pkgs,
-  pkgs-unstable,
+  pkgs-stable,
   ...
 }:
 {
@@ -21,8 +21,7 @@
   hyprland.enable = true;
   # verilog.enable = true;
   zerotier.enable = true;
-  mc-server.enable = true;
-
+  #mc-server.enable = true;
   git-server.enable = true;
 
   audio = {
@@ -70,17 +69,6 @@
 
   time.timeZone = "Europe/Sofia";
 
-  services = {
-    #   pipewire = {
-    #     enable = true;
-    #     alsa.enable = true;
-    #     alsa.support32Bit = true;
-    #     pulse.enable = true;
-    #     extraConfig = {
-    #     };
-    #   };
-  };
-
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
@@ -111,10 +99,10 @@
   environment.systemPackages =
     (with pkgs; [
       kitty
-    ])
-    ++ (with pkgs-unstable; [
       vesktop
       pear-desktop
+    ])
+    ++ (with pkgs-stable; [
     ]);
 
   system.stateVersion = "24.11"; # tl;dr don't change this
