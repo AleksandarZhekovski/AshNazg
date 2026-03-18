@@ -2,7 +2,7 @@
   inputs,
   lib,
   pkgs,
-  pkgs-unstable,
+  pkgs-stable,
   ...
 }:
 {
@@ -131,10 +131,10 @@
   environment.systemPackages =
     (with pkgs; [
       brightnessctl
-    ])
-    ++ (with pkgs-unstable; [
       pear-desktop
       vesktop
+    ])
+    ++ (with pkgs-stable; [
     ]);
 
   # List packages installed in system profile. To search, run:
