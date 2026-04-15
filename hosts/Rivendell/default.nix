@@ -21,7 +21,7 @@
   hyprland.enable = true;
   # verilog.enable = true;
   zerotier.enable = true;
-  #mc-server.enable = true;
+  # mc-server.enable = true;
   git-server.enable = true;
 
   audio = {

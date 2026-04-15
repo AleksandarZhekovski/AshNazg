@@ -34,7 +34,7 @@ with lib;
 
       servers = {
         TheShire = {
-          enable = false;
+          enable = true;
           package = pkgs.fabricServers.fabric-1_21_11;
           jvmOpts = "-Xms1G -Xmx6G";
           autoStart = true;
@@ -52,7 +52,7 @@ with lib;
         };
 
         Tetratka = {
-          enable = true;
+          enable = false;
           package = pkgs.neoforgeServers.neoforge-1_21_10;
           jvmOpts = "-Xms1G -Xmx6G";
           autoStart = true;

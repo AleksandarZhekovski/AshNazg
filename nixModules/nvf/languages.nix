@@ -64,6 +64,14 @@
         lsp.enable = true;
         # treesitter.enable = true;
       };
+
+      csharp = {
+        enable = true;
+        # extensions.roslyn-nvim.enable = true;
+        lsp.enable = true;
+        treesitter.enable = true;
+      };
+
     };
 
   };
