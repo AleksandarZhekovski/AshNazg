@@ -8,16 +8,27 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./greeter.nix
     ./stuff.nix
 
     ../../nixModules
   ];
 
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+  services.greetd = {
+    enable = true;
+    settings = {
+      initial_session = {
+        command = "${pkgs.hyprland}/bin/start-hyprland";
+        user = "alex";
+      };
+      default_session = {
+        command = "${pkgs.zsh}/bin/zsh";
+        user = "alex";
+      };
+    };
+  };
+  hjem.users.alex.files = {
+    ".confg/hypr/hyprland.conf" = ./hypr/Erebor.conf;
+  };
 
   basePkgs.enable = true;
   hyprland.enable = true;
@@ -149,7 +160,6 @@
   # };
 
   # List services that you want to enable:
-
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];

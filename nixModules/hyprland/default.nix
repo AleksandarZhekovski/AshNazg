@@ -4,58 +4,80 @@
   lib,
   config,
   ...
-}: let
+}:
+let
   cfg = config.hyprland;
 in
-  with lib; {
-    options.hyprland = {
-      enable = mkEnableOption "this do what?";
+with lib;
+{
+  options.hyprland = {
+    enable = mkEnableOption "this do what?";
 
-      hyprEco = mkOption {
-        type = types.bool;
-        default = true;
-        description = "hypr* eco system";
-      };
-
-      desktopStuff = mkOption {
-        type = types.bool;
-        default = true;
-        description = "Firefox, kitty, playerctl, etc...";
-      };
+    host = mkOption {
+      type = types.string;
+      description = "the host";
     };
 
-    config = mkIf cfg.enable (mkMerge [
-      {
-        programs.hyprland.enable = true;
-      }
+    hyprEco = mkOption {
+      type = types.bool;
+      default = true;
+      description = "hypr* eco system";
+    };
 
-      (mkIf cfg.hyprEco {
-        environment.systemPackages = with pkgs; [
-          hyprshot
-          hyprpaper
-          hypridle
-        ];
-      })
+    desktopStuff = mkOption {
+      type = types.bool;
+      default = true;
+      description = "Firefox, kitty, playerctl, etc...";
+    };
+  };
 
-      (mkIf cfg.desktopStuff {
-        environment.systemPackages =
-          (with pkgs; [
-            kitty
-            playerctl
-            tofi
-            quickshell
-          ])
-          ++ (with pkgs-stable; [
-          ]);
+  config = mkIf cfg.enable (mkMerge [
+    {
+      programs.hyprland.enable = true;
 
-        programs = {
-          firefox.enable = true;
-          yazi.enable = true;
+      hjem.users = {
+        alex = {
+          enable = true;
+          user = "alex";
+          directory = "/home/alex";
+
+          files = {
+            ".config/hypr/common".source = ./hypr/common;
+            ".config/tofi".source = ./tofi;
+            ".config/quickshell".source = ./quickshell;
+
+          };
         };
+      };
+    }
 
-        fonts.packages = with pkgs; [
-          nerd-fonts.hack
-        ];
-      })
-    ]);
-  }
+    (mkIf cfg.hyprEco {
+      environment.systemPackages = with pkgs; [
+        hyprshot
+        hyprpaper
+        hypridle
+      ];
+    })
+
+    (mkIf cfg.desktopStuff {
+      environment.systemPackages =
+        (with pkgs; [
+          kitty
+          playerctl
+          tofi
+          quickshell
+        ])
+        ++ (with pkgs-stable; [
+        ]);
+
+      programs = {
+        firefox.enable = true;
+        yazi.enable = true;
+      };
+
+      fonts.packages = with pkgs; [
+        nerd-fonts.hack
+      ];
+    })
+  ]);
+}

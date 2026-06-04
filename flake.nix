@@ -27,6 +27,11 @@
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware/master";
     };
+
+    hjem = {
+      url = "github:feel-co/hjem";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
   };
 
   outputs =
@@ -37,6 +42,7 @@
       nvf,
       home-manager,
       nixos-hardware,
+      hjem,
       ...
     }:
     {
@@ -51,20 +57,9 @@
           };
         };
         modules = [
+          hjem.nixosModules.default
           ./hosts/Rivendell
 
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.alex = {
-                imports = [
-                  ./hosts/Rivendell/home.nix
-                ];
-              };
-            };
-          }
         ];
       };
 
@@ -81,21 +76,10 @@
 
         modules = [
           nixos-hardware.nixosModules.lenovo-thinkpad-l13
+          hjem.nixosModules.default
 
           ./hosts/Erebor
 
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.alex = {
-                imports = [
-                  ./hosts/Erebor/home.nix
-                ];
-              };
-            };
-          }
         ];
       };
 

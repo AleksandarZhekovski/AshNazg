@@ -4,9 +4,9 @@
   # users.users.alex.extraGroups = [ "docker" ];
 
   ### Factrio 29/12/25
-  environment.systemPackages = with pkgs; [
-    genymotion
-  ];
+  # environment.systemPackages = with pkgs; [
+  #   genymotion
+  # ];
   # # Also enable non-free packages or else the factorio download will fail:
   nixpkgs.config.allowUnfree = true;
 
@@ -22,19 +22,19 @@
   #   enable = true;
   #   package = pkgs-unstable.waydroid-nftables;
   # };
-  services.mosquitto = {
-  enable = true;
-  listeners = [
-    {
-      acl = [ 
-          "pattern readwrite #" 
-        ];
-      omitPasswordAuth = true;
-      settings.allow_anonymous = true;
-    }
-  ];
-};
-
+#   services.mosquitto = {
+#   enable = true;
+#   listeners = [
+#     {
+#       acl = [ 
+#           "pattern readwrite #" 
+#         ];
+#       omitPasswordAuth = true;
+#       settings.allow_anonymous = true;
+#     }
+#   ];
+# };
+#
 networking.firewall = {
   enable = true;
   allowedTCPPorts = [ 1883 ];
