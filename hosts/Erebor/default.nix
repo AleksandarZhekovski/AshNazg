@@ -8,29 +8,24 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./greeter.nix
     ./stuff.nix
 
     ../../nixModules
   ];
 
-  hjem.users = {
-    alex = {
-      enable = true;
-      user = "alex";
-      directory = "/home/alex";
-
-      files = {
-        ".config/hypr/hyprland.conf".source = ../../whatnamethis/hypr/Erebor.conf;
-        ".config/hypr/common".source = ../../whatnamethis/hypr/common;
+  services.greetd = {
+    enable = true;
+    settings = {
+      initial_session = {
+        command = "${pkgs.hyprland}/bin/start-hyprland";
+        user = "alex";
+      };
+      default_session = {
+        command = "${pkgs.zsh}/bin/zsh";
+        user = "alex";
       };
     };
   };
-
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
 
   basePkgs.enable = true;
   hyprland.enable = true;
