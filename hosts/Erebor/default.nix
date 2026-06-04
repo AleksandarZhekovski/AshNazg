@@ -14,6 +14,19 @@
     ../../nixModules
   ];
 
+  hjem.users = {
+    alex = {
+      enable = true;
+      user = "alex";
+      directory = "/home/alex";
+
+      files = {
+        ".config/hypr/hyprland.conf".source = ../../whatnamethis/hypr/Erebor.conf;
+        ".config/hypr/common".source = ../../whatnamethis/hypr/common;
+      };
+    };
+  };
+
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
@@ -149,7 +162,6 @@
   # };
 
   # List services that you want to enable:
-
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];

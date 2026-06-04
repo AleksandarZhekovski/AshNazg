@@ -7,8 +7,7 @@
     enable = true;
     settings = {
       initial_session = {
-        # I HATE this
-        command = "${pkgs.hyprland}/bin/hyprland -c /home/alex/AshNazg/whatnamethis/hypr/Erebor/Erebor.conf";
+        command = "${pkgs.hyprland}/bin/start-hyprland";
         user = "alex";
       };
       default_session = {
