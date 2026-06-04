@@ -4,7 +4,7 @@
 {
   lib,
   pkgs,
-  pkgs-stable,
+  pkgs-unstable,
   ...
 }:
 {
@@ -46,8 +46,9 @@
 
   gaming = {
     enable = true;
-    lutris = true;
-    minecraft = true;
+    steam = true;
+    # lutris = true;
+    # minecraft = true;
   };
 
   # Use the systemd-boot EFI boot loader.
@@ -100,10 +101,10 @@
   environment.systemPackages =
     (with pkgs; [
       kitty
-      vesktop
-      pear-desktop
     ])
-    ++ (with pkgs-stable; [
+    ++ (with pkgs-unstable; [
+      pear-desktop
+      # vesktop
     ]);
 
   system.stateVersion = "24.11"; # tl;dr don't change this

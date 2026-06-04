@@ -21,7 +21,7 @@
       vim = {
         options = {
           tabstop = 4;
-          shiftwidth = 2;
+          shiftwidth = 4;
         };
 
         ui.illuminate = {

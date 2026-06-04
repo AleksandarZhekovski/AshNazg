@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs-stable = {
-      url = "github:NixOs/nixpkgs/nixos-25.11";
+      url = "github:NixOs/nixpkgs/nixos-26.05";
     };
 
     nixpkgs-unstable = {
@@ -11,8 +11,8 @@
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      url = "github:nix-community/home-manager/release-26.05";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
     nix-minecraft = {
@@ -21,7 +21,7 @@
 
     nvf = {
       url = "github:notashelf/nvf";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
     nixos-hardware = {
@@ -41,12 +41,12 @@
     }:
     {
       # Rivendell, big home computer used for gaming, coding, studying, and much more
-      nixosConfigurations.Rivendell = nixpkgs-unstable.lib.nixosSystem {
+      nixosConfigurations.Rivendell = nixpkgs-stable.lib.nixosSystem {
         system = "x86_64-linux";
 
         specialArgs = {
           inherit inputs;
-          pkgs-stable = import nixpkgs-stable {
+          pkgs-unstable = import nixpkgs-unstable {
             system = "x86_64-linux";
           };
         };
