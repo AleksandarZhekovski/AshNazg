@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs-stable = {
-      url = "github:NixOs/nixpkgs/nixos-25.11";
+      url = "github:NixOs/nixpkgs/nixos-26.05";
     };
 
     nixpkgs-unstable = {
@@ -57,20 +57,9 @@
           };
         };
         modules = [
+          hjem.nixosModules.default
           ./hosts/Rivendell
 
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.alex = {
-                imports = [
-                  ./hosts/Rivendell/home.nix
-                ];
-              };
-            };
-          }
         ];
       };
 

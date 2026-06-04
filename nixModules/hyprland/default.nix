@@ -13,6 +13,11 @@ with lib;
   options.hyprland = {
     enable = mkEnableOption "this do what?";
 
+    host = mkOption {
+      type = types.string;
+      description = "the host";
+    };
+
     hyprEco = mkOption {
       type = types.bool;
       default = true;
@@ -37,11 +42,10 @@ with lib;
           directory = "/home/alex";
 
           files = {
-            ".config/hypr/hyprland.conf".source = ./hypr/Erebor.conf;
             ".config/hypr/common".source = ./hypr/common;
             ".config/tofi".source = ./tofi;
             ".config/quickshell".source = ./quickshell;
-          
+
           };
         };
       };

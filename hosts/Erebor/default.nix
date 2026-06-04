@@ -26,6 +26,9 @@
       };
     };
   };
+  hjem.users.alex.files = {
+    ".confg/hypr/hyprland.conf" = ./hypr/Erebor.conf;
+  };
 
   basePkgs.enable = true;
   hyprland.enable = true;

@@ -11,11 +11,27 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ./greeter.nix
     ./stuff.nix
 
     ../../nixModules
   ];
+
+  services.greetd = {
+    enable = true;
+    settings = {
+      initial_session = {
+        command = "${pkgs.hyprland}/bin/start-hyprland";
+        user = "alex";
+      };
+      default_session = {
+        command = "${pkgs.zsh}/bin/zsh";
+        user = "alex";
+      };
+    };
+  };
+  hjem.users.alex.files = {
+    ".confg/hypr/hyprland.conf".source = ../../nixModules/hyprland/hypr/Rivendell.conf;
+  };
 
   basePkgs.enable = true;
   hyprland.enable = true;
