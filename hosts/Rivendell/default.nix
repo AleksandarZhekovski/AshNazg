@@ -29,8 +29,18 @@
       };
     };
   };
-  hjem.users.alex.files = {
-    ".confg/hypr/hyprland.conf".source = ../../nixModules/hyprland/hypr/Rivendell.conf;
+  hjem = {
+    clobberByDefault = true;
+    users = {
+      alex = {
+        enable = true;
+        user = "alex";
+        directory = "/home/alex";
+        files = {
+          ".config/hypr/hyprland.conf".source = ../../nixModules/hyprland/hypr/Rivendell.conf;
+        };
+      };
+    };
   };
 
   basePkgs.enable = true;

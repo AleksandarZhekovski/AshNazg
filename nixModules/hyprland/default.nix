@@ -35,28 +35,24 @@ with lib;
     {
       programs.hyprland.enable = true;
 
-      hjem.users = {
-        alex = {
-          enable = true;
-          user = "alex";
-          directory = "/home/alex";
-
-          files = {
-            ".config/hypr/common".source = ./hypr/common;
-            ".config/tofi".source = ./tofi;
-            ".config/quickshell".source = ./quickshell;
-
-          };
-        };
+      hjem.users.alex.files = {
+        ".config/hypr/common".source = ./hypr/common;
+        ".config/tofi".source = ./tofi;
+        ".config/quickshell".source = ./quickshell;
       };
     }
 
     (mkIf cfg.hyprEco {
       environment.systemPackages = with pkgs; [
-        hyprshot
         hyprpaper
         hypridle
+        hyprlock
+        hyprshot
       ];
+      hjem.users.alex.files = {
+        ".config/hypr/hyprpaper.conf".source = ./hypr/ecosystem/hyprpaper.conf;
+        ".config/hypr/hypridle.conf".source = ./hypr/ecosystem/hypridle.conf;
+      };
     })
 
     (mkIf cfg.desktopStuff {

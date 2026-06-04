@@ -70,7 +70,7 @@
 	# Prompt text theme
 	# prompt-color = #FFFFFF
 	prompt-background = #00000000
-	prompt-background-padding = 
+	prompt-background-padding = 0
 	prompt-background-corner-radius = 0
 
 	# Placeholder text theme
@@ -82,7 +82,8 @@
 	# Input text theme
 	# input-color = #FFFFFF
 	input-background = #00000000
-	input-background-padding = 0 # top, right, bottom, left
+    #top, right, bottom, left
+	input-background-padding = 0 
 	input-background-corner-radius = 0
 
 	# Default result text theme
