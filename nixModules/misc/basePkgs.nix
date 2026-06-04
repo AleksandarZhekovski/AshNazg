@@ -3,9 +3,11 @@
   lib,
   config,
   ...
-}: let
+}:
+let
   cfg = config.basePkgs;
-in {
+in
+{
   options.basePkgs = {
     enable = lib.mkEnableOption "this do what?";
   };
@@ -19,6 +21,7 @@ in {
       killall
       curl
       nano
+      nh
     ];
   };
 }

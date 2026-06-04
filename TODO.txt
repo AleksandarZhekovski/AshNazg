@@ -1,15 +1,10 @@
 Flake changes
   -p auto garbage collection
 
-  -r migrate to hjem
-    - drop homemanager
+  -m migrate to hjem
+
   -r greeter 
   -r zsh and actual config, this is a nightmare
-  -r abolish references to /home/alex/AshNazg
-    tofi
-    hyprland
-    qt
-    greeter
 
   -i homedir on tmpfs
 
@@ -31,11 +26,7 @@ The looks and the feels
   -p screenshot folder
   -p auto mount usbs (encrypt would be cool)
 
-  -r migrate to hjem???
   -r different colors for the different host
-
-  -d catputchin
-  -d waybar
 
 File sharing and storage
   -p Abolish useless folders
@@ -59,8 +50,8 @@ Hosts
   -d Acerer
 
 Audio heven
-  -i fiddle with pipewiere audio severs
-  -i seamless transition between devices
+  -m fiddle with pipewiere audio severs
+  -p seamless transition between devices
 
 Legend
   -c complete   - Needs no further changes and requires attention only on breaking changes.
