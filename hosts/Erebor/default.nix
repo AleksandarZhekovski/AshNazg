@@ -26,8 +26,20 @@
       };
     };
   };
-  hjem.users.alex.files = {
-    ".confg/hypr/hyprland.conf" = ./hypr/Erebor.conf;
+  # I don't like this
+  hjem = {
+    clobberByDefault = true;
+    users = {
+      alex = {
+        enable = true;
+        user = "alex";
+        directory = "/home/alex";
+        # I don't like this
+        files = {
+          ".config/hypr/hyprland.conf".source = ../../nixModules/hyprland/hypr/Erebor.conf;
+        };
+      };
+    };
   };
 
   basePkgs.enable = true;

@@ -36,6 +36,7 @@
         enable = true;
         user = "alex";
         directory = "/home/alex";
+        # I don't like this
         files = {
           ".config/hypr/hyprland.conf".source = ../../nixModules/hyprland/hypr/Rivendell.conf;
         };
