@@ -52,6 +52,7 @@ with lib;
       hjem.users.alex.files = {
         ".config/hypr/hyprpaper.conf".source = ./hypr/ecosystem/hyprpaper.conf;
         ".config/hypr/hypridle.conf".source = ./hypr/ecosystem/hypridle.conf;
+        ".config/hypr/wallpapers/wallpaper.png".source = ./hypr/wallpapers/wallpaper.png;
       };
     })
 
