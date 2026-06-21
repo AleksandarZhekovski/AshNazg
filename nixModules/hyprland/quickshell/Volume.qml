@@ -3,92 +3,99 @@ import QtQuick.Layouts
 import Quickshell
 import Quickshell.Services.Pipewire
 import Quickshell.Widgets
+import Quickshell.Services.Mpris
 
 Scope {
-	id: root
+    id: root
 
-	// Bind the pipewire node so its volume will be tracked
-	PwObjectTracker {
-		objects: [ Pipewire.defaultAudioSink ]
-	}
+    // Bind the pipewire node so its volume will be tracked
+    PwObjectTracker {
+        objects: [Pipewire.defaultAudioSink]
+    }
 
-	Connections {
-		target: Pipewire.defaultAudioSink?.audio
+    Connections {
+        target: Pipewire.defaultAudioSink?.audio
 
-		function onVolumeChanged() {
-			root.shouldShowOsd = true;
-			hideTimer.restart();
-		}
-	}
+        function onVolumeChanged() {
+            root.shouldShowOsd = true;
+            hideTimer.restart();
+        }
+    }
 
-	property bool shouldShowOsd: false
+    property bool shouldShowOsd: false
 
-	Timer {
-		id: hideTimer
-		interval: 1400
-		onTriggered: root.shouldShowOsd = false
-	}
+    Timer {
+        id: hideTimer
+        interval: 1400
+        onTriggered: root.shouldShowOsd = false
+    }
 
-	// The OSD window will be created and destroyed based on shouldShowOsd.
-	// PanelWindow.visible could be set instead of using a loader, but using
-	// a loader will reduce the memory overhead when the window isn't open.
-	LazyLoader {
-		active: root.shouldShowOsd
+    FrameAnimation {
+        // only emit the signal when the position is actually changing.
+        running: player.playbackState == MprisPlaybackState.Playing
+        // emit the positionChanged signal every frame.
+        onTriggered: player.positionChanged()
+    }
 
-		PanelWindow {
-			// Since the panel's screen is unset, it will be picked by the compositor
-			// when the window is created. Most compositors pick the current active monitor.
+    // The OSD window will be created and destroyed based on shouldShowOsd.
+    // PanelWindow.visible could be set instead of using a loader, but using
+    // a loader will reduce the memory overhead when the window isn't open.
+    LazyLoader {
+        active: root.shouldShowOsd
 
-			anchors.top: true
-			margins.top: screen.height / 7
-			exclusiveZone: 0
+        PanelWindow {
+            // Since the panel's screen is unset, it will be picked by the compositor
+            // when the window is created. Most compositors pick the current active monitor.
 
-			implicitWidth: 800
-			implicitHeight: 60
-			color: "transparent"
+            anchors.top: true
+            margins.top: screen.height / 7
+            exclusiveZone: 0
 
-			// An empty click mask prevents the window from blocking mouse events.
-			mask: Region {}
+            implicitWidth: 800
+            implicitHeight: 60
+            color: "transparent"
 
-			Rectangle {
-				anchors.fill: parent
-				radius: height /2 
-				color: "#80000000"
+            // An empty click mask prevents the window from blocking mouse events.
+            mask: Region {}
 
-				RowLayout {
-					anchors {
-						fill: parent
-						leftMargin: 15
-						rightMargin: 15
-					}
+            Rectangle {
+                anchors.fill: parent
+                radius: height / 2
+                color: "#80000000"
 
-					// IconImage {
-					// 	implicitSize: 30
-					// 	source: Quickshell.iconPath("audio-volume-high-symbolic")
-					// }
-					//
-					Rectangle {
-						// Stretches to fill all left-over space
-						Layout.fillWidth: true
+                RowLayout {
+                    anchors {
+                        fill: parent
+                        leftMargin: 15
+                        rightMargin: 15
+                    }
 
-						implicitHeight: 15
-						radius: 10
-						color: "#50ffffff"
+                    // IconImage {
+                    // 	implicitSize: 30
+                    // 	source: Quickshell.iconPath("audio-volume-high-symbolic")
+                    // }
+                    //
+                    Rectangle {
+                        // Stretches to fill all left-over space
+                        Layout.fillWidth: true
 
-						Rectangle {
-							anchors {
-								left: parent.left
-								top: parent.top
-								bottom: parent.bottom
-							}
+                        implicitHeight: 15
+                        radius: 10
+                        color: "#50ffffff"
 
-							implicitWidth: parent.width * (Pipewire.defaultAudioSink?.audio.volume ?? 0)
-							radius: parent.radius
-						}
-					}
-				}
-			}
-		}
-	}
+                        Rectangle {
+                            anchors {
+                                left: parent.left
+                                top: parent.top
+                                bottom: parent.bottom
+                            }
+
+                            implicitWidth: parent.width * (Pipewire.defaultAudioSink?.audio.volume ?? 0)
+                            radius: parent.radius
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
-

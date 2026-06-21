@@ -2,6 +2,7 @@
 import Quickshell
 
 Scope {
-  Volume {}
-  Tutorial {}
+    Volume {}
+    Tutorial {}
+    Player {}
 }
