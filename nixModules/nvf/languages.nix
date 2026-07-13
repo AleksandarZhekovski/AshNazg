@@ -6,9 +6,7 @@
   programs.nvf.settings.vim = {
     lsp = {
       enable = true;
-      harper-ls = {
-        enable = true;
-      };
+      presets.harper.enable = true;
     };
 
     languages = {
@@ -51,26 +49,26 @@
         treesitter.enable = true;
       };
 
-      html = {
-        enable = true;
-        format.enable = true;
-        lsp.enable = true;
-        # treesitter.enable = true;
-      };
+      # html = {
+      #   enable = true;
+      #   format.enable = true;
+      #   lsp.enable = true;
+      #   # treesitter.enable = true;
+      # };
+      #
+      # css = {
+      #   enable = true;
+      #   format.enable = true;
+      #   lsp.enable = true;
+      #   # treesitter.enable = true;
+      # };
 
-      css = {
-        enable = true;
-        format.enable = true;
-        lsp.enable = true;
-        # treesitter.enable = true;
-      };
-
-      csharp = {
-        enable = true;
-        # extensions.roslyn-nvim.enable = true;
-        lsp.enable = true;
-        treesitter.enable = true;
-      };
+      # csharp = {
+      #   enable = true;
+      #   # extensions.roslyn-nvim.enable = true;
+      #   lsp.enable = true;
+      #   treesitter.enable = true;
+      # };
 
     };
 
