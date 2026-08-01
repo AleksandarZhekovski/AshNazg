@@ -5,7 +5,7 @@
 
   ### Factrio 29/12/25
   environment.systemPackages = with pkgs; [
-    citrix_workspace
+    citrix-workspace
   ];
 
   # In hosts/HOST/configuration.nix
