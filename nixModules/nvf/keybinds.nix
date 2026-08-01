@@ -12,7 +12,7 @@
 
     {
       desc = "Prevus buffer";
-      key = "H";
+      key = "<leader>h";
 
       mode = "n";
       action = ":bn<CR>";
@@ -21,7 +21,7 @@
 
     {
       desc = "Next buffer";
-      key = "L";
+      key = "<leader>l";
 
       mode = "n";
       action = ":bp<CR>";
@@ -48,7 +48,7 @@
 
     {
       desc = "Write all";
-      key = "<C-s>";
+      key = "<leader>w";
 
       mode = ["n" "i"];
       action = "<Esc>:wall<CR>";
