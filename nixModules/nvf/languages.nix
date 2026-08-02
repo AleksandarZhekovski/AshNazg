@@ -12,6 +12,39 @@
       # mappings = lib.mapAttrs (_: __: null) config.programs.nvf.settings.vim.lsp.mappings;
     };
 
+    lsp.servers = {
+      harper = {
+        filetypes = [
+          "asciidoc"
+          "c"
+          "clojure"
+          "cmake"
+          "cpp"
+          "cs"
+          "dart"
+          "gitcommit"
+          "go"
+          "haskell"
+          "html"
+          "java"
+          "javascript"
+          "javascriptreact"
+          "kotlin"
+          "lhaskell"
+          "lua"
+          "mail"
+          "markdown"
+          "nix"
+          "php"
+          "python"
+          "ruby"
+          "rust"
+          "txt"
+          "text"
+        ];
+      };
+    };
+
     languages = {
       # Just enable them one by one
       # enableTreesitter = true;
