@@ -13,32 +13,26 @@
   };
 
   programs.ssh.extraConfig = "
-    Host zErebor
-      Hostname 10.244.0.200
+    Host tErebor
+      Hostname 100.64.64.200
       Port 2024
-    Host ze
+    Host te
       Hostname 10.244.0.200
       Port 2024
     Host le
-      Hostname 192.168.1.100
+      Hostname 192.168.1.200
       Port 2024
 
-    Host zRivendell
-      Hostname 10.244.0.100
+    Host tRivendell
+      Hostname 100.64.64.100
       Port 2024
-    Host zr
-      Hostname 10.244.0.100
+    Host tr
+      Hostname 100.64.64.100
       Port 2024
     Host lr
       Hostname 192.168.1.100
       Port 2024
 
-    Host zAcerer
-      Hostname 10.244.0.250
-      Port 2024
-    Host za
-      Hostname 10.244.0.250
-      Port 2024
      ";
 
   users.users.alex.openssh.authorizedKeys.keyFiles = [
