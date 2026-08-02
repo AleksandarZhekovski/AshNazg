@@ -32,7 +32,7 @@ Scope {
 
     FrameAnimation {
         // only emit the signal when the position is actually changing.
-        running: player.playbackState == MprisPlaybackState.Playing
+        // running: player.playbackState == MprisPlaybackState.Playing
         // emit the positionChanged signal every frame.
         onTriggered: player.positionChanged()
     }
