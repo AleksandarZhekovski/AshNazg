@@ -46,8 +46,9 @@
 
   basePkgs.enable = true;
   hyprland.enable = true;
+  tailscale. enable = true;
   # verilog.enable = true;
-  zerotier.enable = true;
+  # zerotier.enable = true;
   # mc-server.enable = true;
   git-server.enable = true;
 

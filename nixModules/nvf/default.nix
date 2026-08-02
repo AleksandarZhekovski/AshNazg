@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  lib,
   ...
 }:
 {
@@ -11,7 +12,10 @@
     ./languages.nix
   ];
 
-  environment.systemPackages = with pkgs; [ alejandra ];
+  environment.systemPackages = with pkgs; [
+    alejandra
+    ripgrep
+  ];
   environment.variables.EDITOR = "nvim";
 
   programs.nvf = {
@@ -20,8 +24,8 @@
     settings = {
       vim = {
         options = {
-          tabstop = 4;
-          shiftwidth = 4;
+          tabstop = 2;
+          shiftwidth = 2;
         };
 
         ui.illuminate = {
@@ -37,7 +41,16 @@
           lazygit.enable = true;
         };
 
-        tabline.nvimBufferline.enable = true;
+        tabline.nvimBufferline = {
+          enable = true;
+          setupOpts.options = {
+            numbers = lib.mkLuaInline "function(opts) return string.format('%s', opts.id) end ";
+            hover.enabled = false;
+            show_buffer_close_icons = false;
+
+          };
+
+        };
 
         utility.smart-splits.enable = true;
 

@@ -1,4 +1,4 @@
-{...}: {
+{ ... }: {
   imports = [
     ./gaming
     ./hyprland
@@ -6,6 +6,7 @@
     ./misc
     ./nvf
     ./ssh
+    ./tailscale
     ./users
     ./verilog
     ./zerotier

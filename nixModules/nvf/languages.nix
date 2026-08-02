@@ -1,4 +1,6 @@
 {
+  config,
+  lib,
   ...
 }:
 {
@@ -7,6 +9,7 @@
     lsp = {
       enable = true;
       presets.harper.enable = true;
+      # mappings = lib.mapAttrs (_: __: null) config.programs.nvf.settings.vim.lsp.mappings;
     };
 
     languages = {
