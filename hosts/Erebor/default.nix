@@ -44,7 +44,8 @@
 
   basePkgs.enable = true;
   hyprland.enable = true;
-  zerotier.enable = true;
+  # zerotier.enable = true;
+  tailscale.enable = true;
 
   audio = {
     enable = true;
