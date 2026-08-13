@@ -22,6 +22,9 @@ in
       curl
       nano
       nh
+      ncdu
+      p7zip
+      wakeonlan
     ];
   };
 }

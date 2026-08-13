@@ -46,7 +46,7 @@
 
   basePkgs.enable = true;
   hyprland.enable = true;
-  tailscale. enable = true;
+  tailscale.enable = true;
   # verilog.enable = true;
   # zerotier.enable = true;
   # mc-server.enable = true;
@@ -95,6 +95,15 @@
   networking = {
     hostName = "Rivendell"; # Define your hostname.
     networkmanager.enable = true; # Easiest to use and most distros use this by default.
+
+    interfaces = {
+      enp3s0 = {
+        wakeOnLan.enable = true;
+      };
+    };
+    firewall = {
+      allowedUDPPorts = [ 9 ];
+    };
   };
 
   time.timeZone = "Europe/Sofia";
