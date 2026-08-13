@@ -30,6 +30,8 @@
   # };
   # services.factorio.game-password = "1234";
 
+  services.fprintd.enable = true;
+
   # networking.firewall.enable = false;
   # virtualisation.waydroid = {
   #   enable = true;
