@@ -9,22 +9,21 @@ let
 in
 {
   options.basePkgs = {
-    enable = lib.mkEnableOption "this do what?";
+    enable = lib.mkEnableOption "some non-essetial packages, that I likly still want on all my systems ";
   };
 
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       btop
       wol
+      wakeonlan
       tree
       git
       killall
       curl
-      nano
       nh
       ncdu
       p7zip
-      wakeonlan
     ];
   };
 }
