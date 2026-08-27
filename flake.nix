@@ -19,10 +19,6 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
-    nixos-hardware = {
-      url = "github:NixOS/nixos-hardware/master";
-    };
-
     hjem = {
       url = "github:feel-co/hjem";
       inputs.nixpkgs.follows = "nixpkgs-stable";
@@ -35,7 +31,6 @@
       nixpkgs-stable,
       nixpkgs-unstable,
       nvf,
-      nixos-hardware,
       hjem,
       ...
     }:
@@ -50,10 +45,10 @@
             system = "x86_64-linux";
           };
         };
+
         modules = [
           hjem.nixosModules.default
           ./hosts/Rivendell
-
         ];
       };
 
@@ -69,11 +64,8 @@
         };
 
         modules = [
-          nixos-hardware.nixosModules.lenovo-thinkpad-l13
           hjem.nixosModules.default
-
           ./hosts/Erebor
-
         ];
       };
 

@@ -26,7 +26,7 @@
       };
     };
   };
-  # I don't like this
+
   hjem = {
     clobberByDefault = true;
     users = {
