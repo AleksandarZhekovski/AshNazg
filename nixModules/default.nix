@@ -1,5 +1,7 @@
 { ... }: {
   imports = [
+    ./audio
+    ./citrix-workspace
     ./gaming
     ./hyprland
     ./mc-server
@@ -12,6 +14,5 @@
     ./users
     ./verilog
     ./zerotier
-    ./audio
   ];
 }

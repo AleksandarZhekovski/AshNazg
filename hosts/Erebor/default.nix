@@ -29,24 +29,22 @@
 
   hjem = {
     clobberByDefault = true;
-    users = {
-      alex = {
-        enable = true;
-        user = "alex";
-        directory = "/home/alex";
-        # I don't like this
-        files = {
-          ".config/hypr/hyprland.conf".source = ../../nixModules/hyprland/hypr/Erebor.conf;
-        };
+    users.alex = {
+      enable = true;
+      user = "alex";
+      directory = "/home/alex";
+      # I don't like this
+      files = {
+        ".config/hypr/hyprland.conf".source = ../../nixModules/hyprland/hypr/Erebor.conf;
       };
     };
   };
 
   basePkgs.enable = true;
   hyprland.enable = true;
-  # zerotier.enable = true;
   tailscale.enable = true;
   pi-hole.enable = true;
+  citrix-workspace.enable = true;
 
   audio = {
     enable = true;

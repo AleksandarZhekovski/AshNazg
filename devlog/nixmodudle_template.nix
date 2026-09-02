@@ -3,39 +3,36 @@
   config,
   ...
 }:
-let
-  cfg = config.a; # define optoin a
-in
 with lib;
 {
-  options.a = {
+  options._option_ = {
     # this is the option
     enable = mkEnableOption "this do what?"; # enable is prety much mandatory
 
-    b = mkOption {
+    _suboption_ = mkOption {
       # some suboption
       type = types.string;
       description = "the host";
     };
 
-    c = mkOption {
+    _another_suboption_ = mkOption {
       # some suboption
       type = types.string;
       description = "the host";
     };
   };
 
-  config = mkIf cfg.enable (mkMerge [
+  config = mkIf config._option_.enable (mkMerge [
     # if enable is on
     {
       # always of if enabled
     }
 
-    (mkIf cfg.b {
+    (mkIf config._option_.b {
       # if be is enabled
     })
 
-    (mkIf cfg.c {
+    (mkIf config._option_.c {
       # if c is enabled
     })
   ]);
