@@ -46,6 +46,7 @@
   hyprland.enable = true;
   # zerotier.enable = true;
   tailscale.enable = true;
+  pi-hole.enable = true;
 
   audio = {
     enable = true;

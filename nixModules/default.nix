@@ -5,6 +5,7 @@
     ./mc-server
     ./misc
     ./nvf
+    ./pi-hole
     ./radicale
     ./ssh
     ./tailscale
