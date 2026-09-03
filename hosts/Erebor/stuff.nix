@@ -7,6 +7,9 @@
   # In hosts/HOST/configuration.nix
   # # Also enable non-free packages or else the factorio download will fail:
 
+  environment.systemPackages = with pkgs; [
+    
+  ];
 
   # services.nfs.server = {
   #   enable = true;
@@ -21,8 +24,6 @@
   #   openFirewall = true;
   # };
   # services.factorio.game-password = "1234";
-
-  services.fprintd.enable = true;
 
   # networking.firewall.enable = false;
   # virtualisation.waydroid = {
