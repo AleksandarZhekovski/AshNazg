@@ -47,6 +47,8 @@
   citrix-workspace.enable = true;
 
   services.fprintd.enable = true;
+  # services.thermald.enable = true;
+  services.tlp.enable = true;
 
   audio = {
     enable = true;
