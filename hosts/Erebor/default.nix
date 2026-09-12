@@ -35,7 +35,7 @@
       directory = "/home/alex";
       # I don't like this
       files = {
-        ".config/hypr/hyprland.conf".source = ../../nixModules/hyprland/hypr/Erebor.conf;
+        ".config/hypr/hyprland.lua".source = ../../nixModules/hyprland/hypr/Erebor.lua;
       };
     };
   };

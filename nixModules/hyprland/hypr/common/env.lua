@@ -1,0 +1,8 @@
+hl.on("hyprland.start", function()
+    hl.exec_cmd("quickshell -p ~/.config/quickshell/config.qml") 
+    hl.exec_cmd("hyprpaper") 
+    hl.exec_cmd("hypridle") 
+end)
+hl.env( "XCURSOR_THEME", "catppuccin-mocha-lavender")
+hl.env( "XCURSOR_SIZE", "24")
+hl.env( "HYPRCURSOR_SIZE", "24")
