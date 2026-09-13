@@ -3,7 +3,5 @@ run nix-store --add-fixed sha256 linuxx64-25.08.10.111.tar.gz
 keep the tar where it is
 
 
-=======
 extra:
 https://github.com/olafkfreund/nixos_config/blob/main/docs/applications/CITRIX-WORKSPACE-SETUP.md
->>>>>>> b54dc2e (flake bump)
