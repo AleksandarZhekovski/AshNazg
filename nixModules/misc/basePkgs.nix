@@ -4,26 +4,49 @@
   config,
   ...
 }:
-let
-  cfg = config.basePkgs;
-in
+with lib;
 {
   options.basePkgs = {
-    enable = lib.mkEnableOption "some non-essetial packages, that I likly still want on all my systems ";
+    enable = mkEnableOption "some non-essetial packages, that I likly still want on all my systems ";
+
+    light = mkOption {
+      type = types.bool;
+      default = true;
+      description = "small packages and don't need to be build";
+    };
+
+    heavy = mkOption {
+      type = types.bool;
+      default = false;
+      description = "large packages, or need to be build";
+    };
   };
 
-  config = lib.mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [
-      btop
-      wol
-      wakeonlan
-      tree
-      git
-      killall
-      curl
-      nh
-      ncdu
-      p7zip
-    ];
-  };
+  config = mkIf config.basePkgs.enable (mkMerge [
+
+    (mkIf config.basePkgs.light {
+      environment.systemPackages = with pkgs; [
+        btop
+        wol
+        wakeonlan
+        tree
+        git
+        killall
+        curl
+        nh
+        ncdu
+        p7zip
+        fastfetch
+        pulsemixer
+      ];
+    })
+
+    (mkIf config.basePkgs.heavy {
+      environment.systemPackages = with pkgs; [
+        mpv
+        pear-desktop
+        vesktop
+      ];
+    })
+  ]);
 }

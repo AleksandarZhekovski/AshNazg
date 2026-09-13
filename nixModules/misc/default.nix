@@ -19,4 +19,9 @@
   ];
   systemd.network.wait-online.enable = false;
   boot.initrd.systemd.network.wait-online.enable = false;
+
+  networking = {
+    networkmanager.enable = true; # Easiest to use and most distros use this by default.
+  };
+
 }

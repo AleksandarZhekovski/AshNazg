@@ -1,4 +1,4 @@
-### System
+# System
 ## Maintained
     - Rivendell
     - Ererbor
@@ -12,7 +12,7 @@
 ## Interest
     - homedir on tmpfs
 
-### Desktop
+# Desktop
 ## Maintained
     - Rivendell hyprland lua fix
     - low battery indicator
@@ -36,7 +36,7 @@
         - hyprlock, needs config
         - autostart on sleep
 
-### Connectivity
+# Connectivity
 ## Maintained
     - vpn
         - tailscale
@@ -48,10 +48,13 @@
         - ssh-fs
         - copyparty
 
-### Programs
+# Programs
 ## Maintained
     - Citrix
-### Services
+        - can't expand to mutiple monitors
+    - nvim
+        - have to swtich to standalone config
+# Services
 ## Maintained
 
 ## Planed
@@ -60,7 +63,7 @@
     - Minecraft server
     - pi-hole
 
-### Complete
+# Complete
     - app laucher
         - hyprland keybind for tofi, fed into uwsm-app
     - shorthand for devies
@@ -70,13 +73,13 @@
     - screenshot folder 
         - trough env variable in hyprland config
 
-### Deprecated
+# Deprecated
     - greeter 
     - home-manager
     - Acerer
 
 
-### Legend
+# Legend
     - Complete   - Needs no further changes and requires attention only on breaking changes.
     - Maintained - Needs further changes or is volatile
     - Planed     - Pretty sure I want these implemented
