@@ -1,6 +1,6 @@
 local mainMod = "SUPER"
 local mainModShift = "SUPER+SHIFT"
--- local mainModControl = "SUPER + CONTROL"
+local mainModControl = "SUPER+CONTROL"
 
 -- ---------------
 -- --- General ---
@@ -59,6 +59,11 @@ for i = 1, 10 do
     hl.bind(mainMod .. " + " .. key,        hl.dsp.focus({ workspace = i}))
     hl.bind(mainModShift .. "+" .. key,     hl.dsp.window.move({ workspace = i }))
 end
+
+hl.bind(mainModControl .. "+" .. 1,     hl.dsp.workspace.move({ monitor = 0 }))
+hl.bind(mainModControl .. "+" .. 2,     hl.dsp.workspace.move({ monitor = 1 }))
+hl.bind(mainModControl .. "+" .. 3,     hl.dsp.workspace.move({ monitor = 2 }))
+
 
 -- --------------------
 -- --- Function bar ---

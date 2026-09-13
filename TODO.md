@@ -14,6 +14,7 @@
 
 ### Desktop
 ## Maintained
+    - Rivendell hyprland lua fix
     - low battery indicator
         - quickshell
         - looks like shit
