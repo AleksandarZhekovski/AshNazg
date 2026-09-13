@@ -17,7 +17,7 @@
     enable = true;
     heavy = true;
   };
-    
+
   hyprland = {
     enable = true;
     host = "Erebor";
