@@ -16,36 +16,39 @@
     ../../nixModules
   ];
 
-  services.greetd = {
-    enable = true;
-    settings = {
-      initial_session = {
-        command = "${pkgs.hyprland}/bin/start-hyprland";
-        user = "alex";
-      };
-      default_session = {
-        command = "${pkgs.zsh}/bin/zsh";
-        user = "alex";
-      };
-    };
-  };
-  hjem = {
-    clobberByDefault = true;
-    users = {
-      alex = {
-        enable = true;
-        user = "alex";
-        directory = "/home/alex";
-        # I don't like this
-        files = {
-          ".config/hypr/hyprland.conf".source = ../../nixModules/hyprland/hypr/Rivendell.conf;
-        };
-      };
-    };
-  };
+  # services.greetd = {
+  #   enable = true;
+  #   settings = {
+  #     initial_session = {
+  #       command = "${pkgs.hyprland}/bin/start-hyprland";
+  #       user = "alex";
+  #     };
+  #     default_session = {
+  #       command = "${pkgs.zsh}/bin/zsh";
+  #       user = "alex";
+  #     };
+  #   };
+  # };
+  # hjem = {
+  #   clobberByDefault = true;
+  #   users = {
+  #     alex = {
+  #       enable = true;
+  #       user = "alex";
+  #       directory = "/home/alex";
+  #       # I don't like this
+  #       files = {
+  #         ".config/hypr/hyprland.conf".source = ../../nixModules/hyprland/hypr/Rivendell.conf;
+  #       };
+  #     };
+  #   };
+  # };
 
   basePkgs.enable = true;
-  hyprland.enable = true;
+  hyprland = {
+    enable = true;
+    host = "Rivendell";
+  };
   tailscale.enable = true;
   # verilog.enable = true;
   # zerotier.enable = true;

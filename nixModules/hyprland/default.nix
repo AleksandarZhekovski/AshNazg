@@ -5,17 +5,20 @@
   config,
   ...
 }:
-let
-  cfg = config.hyprland;
-in
 with lib;
 {
   options.hyprland = {
     enable = mkEnableOption "this do what?";
 
     host = mkOption {
-      type = types.string;
+      type = types.str;
       description = "the host";
+    };
+
+    auxiliaries = mkOption {
+      type = types.bool;
+      default = true;
+      description = "quckshell, tofi, kitty, playerctl, etc...";
     };
 
     hyprEco = mkOption {
@@ -24,14 +27,15 @@ with lib;
       description = "hypr* eco system";
     };
 
-    desktopStuff = mkOption {
+    desktopPrograms = mkOption {
       type = types.bool;
       default = true;
-      description = "Firefox, kitty, playerctl, etc...";
+      description = "Firefox, yazi...";
     };
+
   };
 
-  config = mkIf cfg.enable (mkMerge [
+  config = mkIf config.hyprland.enable (mkMerge [
     {
       programs.hyprland = {
         enable = true;
@@ -41,13 +45,33 @@ with lib;
       ];
 
       hjem.users.alex.files = {
+        ".config/hypr/hyprland.lua".source = ../../nixModules/hyprland/hypr/${config.hyprland.host}.lua;
         ".config/hypr/common".source = ./hypr/common;
-        ".config/tofi".source = ./tofi;
-        ".config/quickshell".source = ./quickshell;
       };
     }
 
-    (mkIf cfg.hyprEco {
+    (mkIf config.hyprland.auxiliaries {
+      environment.systemPackages =
+        (with pkgs; [
+          kitty
+          playerctl
+          tofi
+          quickshell
+        ])
+        ++ (with pkgs-stable; [
+        ]);
+
+      hjem.users.alex.files = {
+        ".config/tofi".source = ./tofi;
+        ".config/quickshell".source = ./quickshell;
+      };
+
+      fonts.packages = with pkgs; [
+        nerd-fonts.hack
+      ];
+    })
+
+    (mkIf config.hyprland.hyprEco {
       environment.systemPackages = with pkgs; [
         hyprpaper
         hypridle
@@ -61,25 +85,17 @@ with lib;
       };
     })
 
-    (mkIf cfg.desktopStuff {
-      environment.systemPackages =
-        (with pkgs; [
-          kitty
-          playerctl
-          tofi
-          quickshell
-        ])
-        ++ (with pkgs-stable; [
-        ]);
-
+    (mkIf config.hyprland.desktopPrograms {
       programs = {
         firefox.enable = true;
         yazi.enable = true;
       };
 
-      fonts.packages = with pkgs; [
-        nerd-fonts.hack
-      ];
+      environment.systemPackages =
+        (with pkgs; [
+        ])
+        ++ (with pkgs-stable; [
+        ]);
     })
   ]);
 }
