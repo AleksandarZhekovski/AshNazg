@@ -1,0 +1,5 @@
+go to https://www.citrix.com/downloads/workspace-app/linux/workspace-app-for-linux-latest.html
+run nix-store --add-fixed sha256 linuxx64-25.08.10.111.tar.gz
+keep the tar where it is
+
+
