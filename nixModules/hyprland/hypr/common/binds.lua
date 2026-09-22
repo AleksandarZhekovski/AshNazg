@@ -72,8 +72,8 @@ hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_SINK@
 hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_SINK@ 5%-"))
 hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_SINK@ toggle"))
 
-hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brigtnessctl s 5$-"))
-hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brigtnessctl s 5$+"))
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl set 5%-"))
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl set 5%+"))
 
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"))
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"))
