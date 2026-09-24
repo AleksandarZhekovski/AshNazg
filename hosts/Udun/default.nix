@@ -23,7 +23,7 @@
     host = "Udun";
   };
 
-  # tailscale.enable = true;
+  tailscale.enable = true;
   # pi-hole.enable = true;
   # citrix-workspace.enable = true;
 
