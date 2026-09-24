@@ -69,6 +69,23 @@
         ];
       };
 
+      # Udun: Thinkpad laptop work
+      nixosConfigurations.Udun = nixpkgs-unstable.lib.nixosSystem {
+        system = "x86_64-linux";
+
+        specialArgs = {
+          inherit inputs;
+          pkgs-unstable = import nixpkgs-unstable {
+            system = "x86_64-linux";
+          };
+        };
+
+        modules = [
+          hjem.nixosModules.default
+          ./hosts/Udun
+        ];
+      };
+
       # nixosConfigurations.Acerer = nixpkgs.lib.nixosSystem {
       #   system = "x86_64-linux";
       #
