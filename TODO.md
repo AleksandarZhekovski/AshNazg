@@ -26,7 +26,6 @@
         - waiting for zsh to become a module
     
 ## Planed
-    - zsh config trough module
     - seetrough terminal
         - config is not a module
     - animations
@@ -54,6 +53,7 @@
         - can't expand to mutiple monitors
     - nvim
         - have to swtich to standalone config
+
 # Services
 ## Maintained
 
@@ -64,6 +64,7 @@
     - pi-hole
 
 # Complete
+    - zsh config trough module
     - app laucher
         - hyprland keybind for tofi, fed into uwsm-app
     - shorthand for devies

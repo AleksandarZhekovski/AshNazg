@@ -14,5 +14,6 @@
     ./users
     ./verilog
     ./zerotier
+    ./zsh
   ];
 }
