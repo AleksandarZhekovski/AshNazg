@@ -47,6 +47,8 @@ zstyle ':vcs_info:git:*' actionformats '%F{green} %f(%F{yellow}%b%f|%F{red}%a
 if [[ "$HOST" == "Erebor" ]]; then
   local my_host_color='green'
 elif [[ "$HOST" == "Rivendell" ]]; then
+  local my_host_color='blue'
+elif [[ "$HOST" == "Udun" ]]; then
   local my_host_color='yellow'
 else 
   local my_host_color='red'

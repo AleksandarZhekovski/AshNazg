@@ -25,7 +25,7 @@
 
   tailscale.enable = true;
   # pi-hole.enable = true;
-  # citrix-workspace.enable = true;
+  citrix-workspace.enable = true;
 
   services = {
     blueman.enable = true;
