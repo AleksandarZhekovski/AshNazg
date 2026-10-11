@@ -1,34 +1,15 @@
-# Edit this configuration file to define what should be installed on
-# your system. Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 {
-  lib,
   pkgs,
   pkgs-unstable,
   ...
 }:
 {
   imports = [
-    # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./stuff.nix
 
     ../../nixModules
   ];
-
-  services.greetd = {
-    enable = true;
-    settings = {
-      # initial_session = {
-      #   command = "${pkgs.hyprland}/bin/start-hyprland";
-      #   user = "alex";
-      # };
-      default_session = {
-        command = "${pkgs.zsh}/bin/zsh";
-        user = "alex";
-      };
-    };
-  };
 
   hjem = {
     clobberByDefault = true;
@@ -37,10 +18,7 @@
         enable = true;
         user = "alex";
         directory = "/home/alex";
-        # I don't like this
-        # files = {
-        #   ".config/hypr/hyprland.conf".source = ../../nixModules/hyprland/hypr/Rivendell.conf;
-        # };
+
       };
     };
   };
@@ -48,11 +26,8 @@
   basePkgs.enable = true;
   # hyprland.enable = true;
   tailscale.enable = true;
-  # verilog.enable = true;
-  # zerotier.enable = true;
   # mc-server.enable = true;
   git-server.enable = true;
-  # radicale.enable = true;
 
   audio = {
     enable = true;
@@ -75,7 +50,7 @@
   };
 
   gaming = {
-    enable = true;
+    enable = false;
     steam = true;
     # lutris = true;
     # minecraft = true;
