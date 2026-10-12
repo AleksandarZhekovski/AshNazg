@@ -39,12 +39,6 @@
     powerOnBoot = true;
   };
 
-
-  gaming = {
-    # enable = true;
-    # lutris = true;
-  };
-
   environment.systemPackages =
     (with pkgs; [
       brightnessctl
@@ -59,8 +53,11 @@
     loader.efi.canTouchEfiVariables = true;
     kernelPackages = pkgs.linuxPackages_latest;
     kernelParams = [
-     # "mitigations=off"
+      # "mitigations=off"
+      "acpi_backlight=native"
+      "psmouse.synaptics_intertouch=0"
     ];
+
   };
   time.timeZone = "Europe/Sofia";
   system.stateVersion = "24.11"; # Did you read the comment?

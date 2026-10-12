@@ -8,10 +8,12 @@ hl.config({
     kb_layout = "us,bg",
     kb_variant = ",phonetic",
     follow_mouse = 1,
-    sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
+    sensitivity = -0.4, -- -1.0 - 1.0, 0 means no modification.
     touchpad = {
         disable_while_typing = true;
-    }
+    };
+
+    accel_profile = "custom 0 0.0 0.0"
   }
 })
     

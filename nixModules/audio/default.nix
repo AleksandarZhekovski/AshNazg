@@ -10,7 +10,11 @@ in
 with lib;
 {
   options.audio = {
-    enable = mkEnableOption "Pipewire, pipewire-pulse, wireplumber, audio servers and configs";
+    enable = mkOption {
+      type = types.bool;
+      default = true;
+      description = "Pipewire, pipewire-pulse, wireplumber, audio servers and configs";
+    };
 
     roc-source = {
       enable = mkOption {
