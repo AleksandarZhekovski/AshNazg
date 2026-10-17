@@ -26,6 +26,7 @@
   basePkgs.enable = true;
   # hyprland.enable = true;
   tailscale.enable = true;
+  zerotier.enable = true;
   # mc-server.enable = true;
   git-server.enable = true;
 

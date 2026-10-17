@@ -1,37 +1,24 @@
-###- Monitors -###
-$monitor1 = DP-2
-$monitor2 = HDMI-A-2
+-- --- Monitors ---
+hl.monitor({ output = "eDP-2", mode = "preferred", position = "0x0", scale = 1 })
+hl.monitor({ output = "", mode = "preferred", position = "0x-1080", scale = 1 })
 
-monitor = $monitor1, prefured, 0x0, 1
-monitor = $monitor2, prefured, auto-right, 1
+-- --- Input ---
+hl.config({
+  input = {
+    kb_layout = "us,bg",
+    kb_variant = ",phonetic",
+    follow_mouse = 1,
+    sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
+    touchpad = {
+        disable_while_typing = true;
+    }
+  }
+})
+    
+-- --- Colors ---
+color1 = "rgba(ff9900ee)"
 
-###- Workspaces -###
-workspace = 1, monitor:$monitor1
-workspace = 2, monitor:$monitor1
-workspace = 3, monitor:$monitor2
-workspace = 4, monitor:$monitor2
+-- --- Sources ---
+require("common/*")
 
-###- Input -###
-input {
-    kb_layout = us,bg
-    kb_variant = ,phonetic
-    kb_model =
-    kb_options =
-    kb_rules =
-
-    follow_mouse = 1
-
-    sensitivity = -0.6# -1.0 - 1.0, 0 means no modification.
-
-}
-###- Colors -###
-$color_1 = 14,26,64
-$color_2 = 34,47,91
-$color_3 = 93,93,93
-$color_4 = 148,107,45
-$color_5 = 0,0,0
-
-###- Sources -###
-source = ./common/*
-
-#
+-- --- Overwrites ---
