@@ -17,4 +17,5 @@ zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/.zcompcache"
 
 source $ZDOTDIR/config/prompts.zsh
+source $ZDOTDIR/config/aliases.zsh
 
