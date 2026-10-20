@@ -1,32 +1,57 @@
-# Edit this configuration file to define what should be installed on
-# your system. Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 {
-  lib,
   pkgs,
   pkgs-unstable,
   ...
 }:
 {
   imports = [
-    # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./stuff.nix
 
     ../../nixModules
   ];
 
-  basePkgs.enable = true;
+  networking.hostName = "Rivendell";
+
+  basePkgs = {
+    enable = true;
+    heavy = true;
+  };
+
   hyprland = {
     enable = true;
     host = "Rivendell";
   };
+
   tailscale.enable = true;
-  # verilog.enable = true;
   # zerotier.enable = true;
   # mc-server.enable = true;
   git-server.enable = true;
   # radicale.enable = true;
+
+  hardware = {
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+      settings = {
+        General = {
+          Experimental = true;
+          FastConnectable = true;
+        };
+        Policy = {
+          AutoEnable = true;
+        };
+      };
+    };
+
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+      extraPackages = with pkgs; [
+        rocmPackages.clr.icd
+      ];
+    };
+  };
 
   audio = {
     enable = true;
@@ -55,7 +80,37 @@
     minecraft = true;
   };
 
-  # Use the systemd-boot EFI boot loader.
+  networking = {
+    interfaces = {
+      enp3s0 = {
+        wakeOnLan.enable = true;
+      };
+    };
+    firewall = {
+      allowedUDPPorts = [ 9 ];
+    };
+  };
+
+  environment.systemPackages =
+    (with pkgs; [
+      # kitty
+    ])
+    ++ (with pkgs-unstable; [
+      # pear-desktop
+      # vesktop
+    ]);
+
+  hjem = {
+    clobberByDefault = true;
+    users = {
+      alex = {
+        enable = true;
+        user = "alex";
+        directory = "/home/alex";
+      };
+    };
+  };
+
   boot = {
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
@@ -67,58 +122,6 @@
     kernelParams = [ "mitigations=off" ];
   };
 
-  networking = {
-    hostName = "Rivendell"; # Define your hostname.
-    networkmanager.enable = true; # Easiest to use and most distros use this by default.
-
-    interfaces = {
-      enp3s0 = {
-        wakeOnLan.enable = true;
-      };
-    };
-    firewall = {
-      allowedUDPPorts = [ 9 ];
-    };
-  };
-
   time.timeZone = "Europe/Sofia";
-
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true;
-    settings = {
-      General = {
-        Experimental = true;
-        FastConnectable = true;
-      };
-      Policy = {
-        AutoEnable = true;
-      };
-    };
-  };
-
-  hardware.enableRedistributableFirmware = true;
-
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-    extraPackages = with pkgs; [
-      rocmPackages.clr.icd
-    ];
-  };
-
-  environment = {
-    sessionVariables.NIXOS_OZONE_WL = "1";
-    variables.TERM = "xterm-kitty";
-  };
-  environment.systemPackages =
-    (with pkgs; [
-      kitty
-    ])
-    ++ (with pkgs-unstable; [
-      pear-desktop
-      # vesktop
-    ]);
-
   system.stateVersion = "24.11"; # tl;dr don't change this
 }

@@ -19,6 +19,9 @@ hl.config({
 color1 = "rgba(ff9900ee)"
 
 -- --- Sources ---
-require("common/*")
+require("common/env")
+require("common/styling")
+require("common/binds")
+require("common/misc")
 
 -- --- Overwrites ---
