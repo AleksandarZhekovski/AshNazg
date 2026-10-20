@@ -30,7 +30,6 @@
   services = {
     blueman.enable = true;
     upower.enable = true;
-    fprintd.enable = true;
     tlp.enable = true;
   };
 
