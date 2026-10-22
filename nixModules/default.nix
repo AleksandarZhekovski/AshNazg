@@ -11,6 +11,7 @@
     ./radicale
     ./ssh
     ./tailscale
+    ./tmux
     ./users
     ./verilog
     ./zerotier
