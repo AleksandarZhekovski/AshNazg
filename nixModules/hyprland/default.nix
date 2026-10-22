@@ -96,8 +96,9 @@ with lib;
         hyprshot
       ];
       hjem.users.alex.files = {
-        ".config/hypr/hyprpaper.conf".source = ./hypr/ecosystem/hyprpaper.conf;
+        ".config/hypr/hyprlock.conf".source = ./hypr/ecosystem/hyprlock.conf;
         ".config/hypr/hypridle.conf".source = ./hypr/ecosystem/hypridle.conf;
+        ".config/hypr/hyprpaper.conf".source = ./hypr/ecosystem/hyprpaper.conf;
         ".config/hypr/wallpapers/wallpaper.png".source = ./hypr/wallpapers/wallpaper.png;
       };
     })
