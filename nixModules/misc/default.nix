@@ -1,5 +1,6 @@
 {
   pkgs,
+  config,
   ...
 }:
 {
@@ -9,10 +10,16 @@
     ./firewall.nix
     ./tEmPoRaRy_FiXeS.nix
   ];
+
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
   ];
+
+  services.getty = {
+    greetingLine = " --- Wellcome to AshNazg#${config.networking.hostName} ---";
+    helpLine = "Abandon all hope ye who enter here";
+  };
 
   environment.systemPackages = with pkgs; [
     nano
