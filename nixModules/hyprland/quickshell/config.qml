@@ -2,7 +2,8 @@
 import Quickshell
 
 Scope {
-    Volume {}
-    Tutorial {}
     Player {}
+    Tabs {}
+    Tutorial {}
+    Volume {}
 }

@@ -71,8 +71,9 @@
   };
 
   gaming = {
-    # enable = true;
-    # lutris = true;
+    enable = true;
+    lutris = true;
+    steam = true;
   };
 
   environment.systemPackages =

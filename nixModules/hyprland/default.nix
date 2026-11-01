@@ -74,6 +74,7 @@ with lib;
           playerctl
           tofi
           quickshell
+          qt6.qtwayland
         ])
         ++ (with pkgs-stable; [
         ]);
