@@ -12,6 +12,9 @@ hl.config({
     touchpad = {
         disable_while_typing = true;
     }
+  },
+  cursor = {
+    no_hardware_cursors = 1
   }
 })
     
