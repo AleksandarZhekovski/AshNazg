@@ -2,6 +2,14 @@ local mainMod = "SUPER"
 local mainModShift = "SUPER+SHIFT"
 local mainModControl = "SUPER+CONTROL"
 
+function mToggle()
+  if hl.get_monitor("eDP-1") ~= nil then
+    hl.monitor({ output = "eDP-1", disabled = true })
+  else
+    hl.monitor({ output = "eDP-1", disabled = false })
+  end
+end
+
 -- ---------------
 -- --- General ---
 -- ---------------
@@ -32,6 +40,7 @@ hl.bind(mainMod .. "+F", hl.dsp.window.fullscreen({action = "toggle"}))
 -- B
 -- N
 hl.bind(mainMod .. "+M", hl.dsp.dpms({action = "toggle"}))
+hl.bind(mainModShift .. "+M", mToggle)
 
 hl.bind("PRINT", hl.dsp.exec_cmd("hyprshot -m output"))
 hl.bind(mainMod .. "+PRINT", hl.dsp.exec_cmd("hyprshot -m region"))
