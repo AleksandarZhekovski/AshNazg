@@ -3,19 +3,18 @@
   config,
   ...
 }:
-let
-  cfg = config.zerotier;
-in
-with lib;
-{
+with lib; {
   options.zerotier = {
     enable = mkEnableOption "Connect to Zerotier";
   };
 
-  config = mkIf cfg.enable {
+  config = mkIf config.zerotier.enable {
     services.zerotierone = {
       enable = true;
-      joinNetworks = [ "363c67c55a84e9d4" ];
+      joinNetworks = [
+        # "363c67c55a84e9d4" # mammaaa
+        "65228d8d6de05747" # IronHarts
+      ];
     };
   };
 }
