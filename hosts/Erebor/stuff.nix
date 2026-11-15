@@ -1,5 +1,8 @@
-{ pkgs, pkgs-unstable, ... }:
 {
+  pkgs,
+  pkgs-unstable,
+  ...
+}: {
   # virtualisation.docker.enable = true;
   # users.users.alex.extraGroups = [ "docker" ];
 
@@ -8,7 +11,6 @@
   # # Also enable non-free packages or else the factorio download will fail:
 
   environment.systemPackages = with pkgs; [
-    
   ];
 
   # services.nfs.server = {
@@ -47,5 +49,4 @@
   #   enable = true;
   #   allowedTCPPorts = [ 1883 ];
   # };
-
 }

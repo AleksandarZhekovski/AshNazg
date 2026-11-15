@@ -43,6 +43,7 @@
           inherit inputs;
           pkgs-unstable = import nixpkgs-unstable {
             system = "x86_64-linux";
+            config.allowUnfree = true;
           };
         };
 
@@ -53,13 +54,14 @@
       };
 
       # Erebor: Thinkpad laptop used for studying and coding
-      nixosConfigurations.Erebor = nixpkgs-unstable.lib.nixosSystem {
+      nixosConfigurations.Erebor = nixpkgs-stable.lib.nixosSystem {
         system = "x86_64-linux";
 
         specialArgs = {
           inherit inputs;
           pkgs-unstable = import nixpkgs-unstable {
             system = "x86_64-linux";
+            config.allowUnfree = true;
           };
         };
 

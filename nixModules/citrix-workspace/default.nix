@@ -1,7 +1,8 @@
 {
-  pkgs,
   lib,
   config,
+  pkgs,
+  pkgs-unstable,
   ...
 }:
 with lib;
@@ -12,8 +13,8 @@ with lib;
 
   config = mkIf config.citrix-workspace.enable (mkMerge [
     {
-      environment.systemPackages = with pkgs; [
-        citrix-workspace
+      environment.systemPackages = with pkgs-unstable; [
+        citrix_workspace
       ];
       nixpkgs.config.permittedInsecurePackages = [
         "libsoup-2.74.3"

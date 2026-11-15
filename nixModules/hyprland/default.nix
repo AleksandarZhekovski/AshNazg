@@ -1,12 +1,11 @@
 {
   pkgs,
-  pkgs-stable,
+  pkgs-unstable,
   lib,
   config,
   ...
 }:
-with lib;
-{
+with lib; {
   options.hyprland = {
     enable = mkEnableOption "this do what?";
 
@@ -32,7 +31,6 @@ with lib;
       default = true;
       description = "Firefox, yazi...";
     };
-
   };
 
   config = mkIf config.hyprland.enable (mkMerge [
@@ -52,15 +50,21 @@ with lib;
 
     (mkIf config.hyprland.auxiliaries {
       environment.systemPackages =
-        (with pkgs; [
-          kitty
-          playerctl
-          tofi
-          quickshell
-          qt6.qtwayland
-        ])
-        ++ (with pkgs-stable; [
-        ]);
+        (
+          with pkgs; [
+            kitty
+            playerctl
+            tofi
+            quickshell
+            qt6.qtwayland
+          ]
+        )
+        ++ (
+          with pkgs-unstable; [
+            # blah
+          ]
+        );
+
 
       hjem.users.alex.files = {
         ".config/tofi".source = ./tofi;
@@ -95,9 +99,9 @@ with lib;
 
       environment.systemPackages =
         (with pkgs; [
-        ])
+          ])
         ++ (with pkgs-stable; [
-        ]);
+          ]);
     })
   ]);
 }
