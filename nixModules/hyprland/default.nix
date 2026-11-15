@@ -21,12 +21,6 @@ with lib;
       description = "quckshell, tofi, kitty, playerctl, etc...";
     };
 
-    autostart = mkOption {
-      type = types.bool;
-      default = false;
-      description = "Auto start hyprland";
-    };
-
     hyprEco = mkOption {
       type = types.bool;
       default = true;
@@ -55,17 +49,6 @@ with lib;
         ".config/hypr/common".source = ./hypr/common;
       };
     }
-
-    (mkIf config.hyprland.autostart {
-      services.getty = {
-        autologinUser = "alex";
-        autologinOnce = true;
-      };
-
-      hjem.users.alex.files = {
-        ".config/zsh/.zlogin".text = "if uwsm check may-start; then exec uwsm start default; fi";
-      };
-    })
 
     (mkIf config.hyprland.auxiliaries {
       environment.systemPackages =

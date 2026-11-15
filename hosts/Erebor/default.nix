@@ -21,7 +21,6 @@
   hyprland = {
     enable = true;
     host = "Erebor";
-    autostart = true;
   };
 
   tailscale.enable = true;
