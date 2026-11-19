@@ -49,6 +49,7 @@
 
         modules = [
           hjem.nixosModules.default
+
           ./hosts/Rivendell
         ];
       };
@@ -67,23 +68,26 @@
 
         modules = [
           hjem.nixosModules.default
+
           ./hosts/Erebor
         ];
       };
 
       # Udun: Thinkpad laptop work
-      nixosConfigurations.Udun = nixpkgs-unstable.lib.nixosSystem {
+      nixosConfigurations.Udun = nixpkgs-stable.lib.nixosSystem {
         system = "x86_64-linux";
 
         specialArgs = {
           inherit inputs;
           pkgs-unstable = import nixpkgs-unstable {
             system = "x86_64-linux";
+            config.allowUnfree = true;
           };
         };
 
         modules = [
           hjem.nixosModules.default
+
           ./hosts/Udun
         ];
       };
