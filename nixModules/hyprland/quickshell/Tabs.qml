@@ -1,34 +1,63 @@
 import QtQuick
 import Quickshell
-// import Quickshell.Wayland
 import Quickshell.Hyprland
 
 Scope {
     id: tabs
-    ShellRoot {
-        Variants {
-            model: Quickshell.screens
+    Variants {
+        model: Quickshell.screens
 
-            PanelWindow {
-                anchors.top: true
-                anchors.left: true
-                anchors.right: true
+        PanelWindow { // qmllint disable uncreatable-type
+            id: leftSidePanel
 
-                margins.left: 2
-                margins.right: 2
+            required property var modelData
+            screen: modelData
 
-                implicitHeight: 20
-                color: "transparent"
-                aboveWindows: true
-                exclusiveZone: 0
+            anchors {
+                top: true
+                left: true
+            }
 
-                mask: Region {}
+            implicitWidth: screen.width / 2
+            implicitHeight: 18
+            aboveWindows: true
+            color: "#00FF0000"
 
-                Text {
-                    anchors.right: parent
-                    text: "%1".arg(Hyprland.focusedWorkspace.id)
-                    color: "#a9b1d6"
-                    font.pixelSize: 14
+            exclusionMode: ExclusionMode.Ignore // set to .auto to take space
+
+            mask: Region {}
+
+            Row {
+                anchors.fill: parent
+                anchors.leftMargin: 8
+                anchors.rightMargin: 8
+                // layoutDirection: Qt.RightToLeft
+                spacing: 8
+
+                Rectangle {
+                    implicitHeight: parent.height
+                    implicitWidth: screenName.contentWidth
+                    color: "#00666666"
+                    Text {
+                        id: screenName
+                        anchors.centerIn: parent
+                        text: leftSidePanel.screen.name
+                        color: "#a9b1d6"
+                        font.pixelSize: 12
+                    }
+                }
+
+                Rectangle {
+                    implicitHeight: parent.height
+                    implicitWidth: focusedWorkwpaceId.contentWidth
+                    color: "#00666666"
+                    Text {
+                        id: focusedWorkwpaceId
+                        anchors.centerIn: parent
+                        text: Hyprland.focusedWorkspace.id
+                        color: "#a9b1d6"
+                        font.pixelSize: 12
+                    }
                 }
             }
         }

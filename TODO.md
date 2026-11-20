@@ -2,6 +2,7 @@
 ## Maintained
     - Rivendell
     - Ererbor
+    - Udun
     
 ## Planed
     - Persistent storage usb nixos
@@ -21,7 +22,7 @@
     - popups on volume 
         - quickshell
         - looks a little less like shit
-    - different colors for the different host
+    - different colors for the different host in the terminal
         - trough zsh config
         - waiting for zsh to become a module
     
