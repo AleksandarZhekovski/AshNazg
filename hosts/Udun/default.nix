@@ -23,6 +23,11 @@
     host = "Udun";
   };
 
+  gaming = {
+    enable = true;
+    lutris = true;
+  };
+
   tailscale.enable = true;
   # pi-hole.enable = true;
   citrix-workspace.enable = true;
